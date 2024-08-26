@@ -1,0 +1,100 @@
+{
+  "personalInformation": {
+    "name": "Olivier Pierre",
+    "title": "Développeur Front-End & Chef de Projet Web",
+    "location": "13003 Marseille",
+    "phone": "06 50 83 75 82",
+    "email": "olivier@opierre.fr",
+    "age": 37,
+    "drivingLicense": "Permis B",
+    "languages": {
+      "french": "native",
+      "english": "B2",
+      "spanish": "B1"
+    }
+  },
+  "summary": "Spécialisé en React et WordPress, je dispose d’une expérience solide dans la réalisation de projets web. Alliant expertise en développement front-end et gestion de projet, j’ai conduit de nombreux projets, assurant à la fois leur conception technique et leur gestion opérationnelle.",
+  "skills": {
+    "frontEnd": ["HTML 5", "SASS (LESS)", "JavaScript (ES6)", "React", "Redux", "Next.js", "TypeScript", "Styled-Component", "Kepler.gl", "WordPress"],
+    "backEnd": ["Node.js", "Express"],
+    "databases": ["SQL", "Mongo DB"],
+    "workflow": ["GIT", "Github", "Gitlab"],
+    "api": ["OpenCage Geocoding", "IGN Géoservices", "OpenWeatherMap", "News API"],
+    "tools": ["Notion", "AirTable", "Trello", "Jira", "Slack", "Microsoft Teams"]
+  },
+  "experiences": [
+    {
+      "title": "Développeur Front-End & Chef de Projet (Free-lance, Lyon)",
+      "company": "Free-lance",
+      "location": "Lyon",
+      "startDate": "2017-O7",
+      "endDate": "2022-O7",
+      "tasks": [
+        "Conception et développement de sites web",
+        "Gestion complète de projets pour des clients variés",
+        "Intégration de solutions sur mesure sous WordPress et React",
+        "Clients : La Métropole de Lyon, Hotel Outa, Norgay, Keolys, Arkanite"
+      ]
+    },
+    {
+      "title": "Développeur Front-End React",
+      "company": "Norgay",
+      "location": "Lyon",
+      "startDate": "2019-O9",
+      "endDate": "2020-11",
+      "tasks": [
+        "Développement du projet Datatlas pour Erasme",
+        "Pilotage technique du projet",
+        "Intégration avancée de Kepler.gl"
+      ]
+    },
+    {
+      "title": "Développeur Front-End - Chargé de Développement",
+      "company": "Agence Akumaw",
+      "location": "Lyon",
+      "startDate": "2021-12",
+      "endDate": "2024-O3",
+      "tasks": [
+        "Gestion des projets front-end",
+        "Coordination avec les équipes créatives",
+        "Suivi des livrables et respect des délais"
+      ]
+    },
+    {
+      "title": "Chargé de Développement",
+      "company": "René Pierre Location",
+      "location": "Lyon",
+      "dates": "06/16 - 10/16",
+      "startDate": "2016-O6",
+      "endDate": "2016-10",
+      "tasks": [
+        "Création du site web",
+        "Stratégie de développement commercial",
+        "Gestion des partenariats numériques"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Titre RNCP niveau VI - Chef de Projet Web",
+      "institution": "La Capsule",
+      "dates": "2021",
+      "details": "Coding Bootcamp Développeur Web & Mobile Fullstack JavaScript"
+    },
+    {
+      "degree": "Master en communication",
+      "institution": "EFAP Lyon",
+      "dates": "2011",
+      "details": "Diplômé de l’EFAP"
+    },
+    {
+      "degree": "Baccalauréat STT",
+      "institution": "Action et Communication Commerciale",
+      "dates": "2006"
+    }
+  ],
+  "interests": [
+    "Musique : DJ, sous les pseudonymes STONN et Minimum Djs.",
+    "Basketball : Diplôme d’animateur basket, FFB. Entraîneur de basket (09/01-06/05)"
+  ]
+}
