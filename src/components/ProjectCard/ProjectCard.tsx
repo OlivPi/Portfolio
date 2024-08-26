@@ -1,10 +1,4 @@
-import { Project } from '@/lib/types/ProjectTypes'
-
-interface ProjectCardProps {
-  project: Project
-}
-
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard() {
   return (
     <div className="card">
         <ul>

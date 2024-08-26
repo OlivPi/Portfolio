@@ -4,6 +4,6 @@ export default async function WebProjectsPage() {
     <section>
       <h1>Mes Projets Web</h1>
             <ProjectCard/>
-    </section>
+w    </section>
   )
 }
