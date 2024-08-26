@@ -1,26 +1,14 @@
-/*
-import { PrismaClient } from '@prisma/client'
-import { Experience } from '@/lib/types/ExperiencesTypes'
+import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient()
+let prisma: PrismaClient;
 
-async function main() {
-  return await prisma.experience.findMany()
-}
-export async function getExperiences(): Promise<Experience[]> {
-  return await prisma.experience.findMany()
-}
-export async function getProjects(): Promise<Project[]> {
-  return await prisma.project.findMany()
+if (process.env.NODE_ENV === 'production') {
+    prisma = new PrismaClient();
+} else {
+    if (!global.prisma) {
+        global.prisma = new PrismaClient();
+    }
+    prisma = global.prisma;
 }
 
-export async function getSkills(): Promise<Skill[]> {
-  return await prisma.skill.findMany()
-}
-
-export async function getReferences(): Promise<Reference[]> {
-  return await prisma.reference.findMany()
-}
-
-export default prisma
-*/
+export default prisma;
