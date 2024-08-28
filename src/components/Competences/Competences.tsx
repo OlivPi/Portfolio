@@ -3,8 +3,8 @@ interface SkillListProps {
   skill: SkillsSummary[];
 }
 
-export default function Skill({ skills }: SkillListProps) {
-  const skillsByType = skills.reduce((acc, skill) => {
+export default function Skill({ skill }: SkillListProps) {
+  const skillsByType = skill.reduce((acc, skill) => {
     if (!acc[skill.type]) {
       acc[skill.type] = [];
     }
