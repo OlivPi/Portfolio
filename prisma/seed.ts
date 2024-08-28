@@ -1,81 +1,174 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
+import fs from 'fs/promises';
+import path from "path";
+import {ResumeData} from "@/lib/types/resumeTypes";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 async function main() {
+    // Charger les données JSON
+    const filePath = path.join(process.cwd(), 'data', 'resumeData.json');
+    const jsonData = await fs.readFile(filePath, 'utf8');
+    const data : ResumeData = JSON.parse(jsonData);
 
-    const experience1 = await prisma.experience.upsert({
-        where: { id: 1 },
-        update: {},
-        create: {
-            company: 'Tech Corp',
-            city: 'New York',
-            role: 'Software Engineer',
-            description: 'Worked on various projects involving web development.',
-            tasks: ['Developed APIs', 'Implemented front-end interfaces', 'Collaborated with UX designers'],
-            logo: 'techcorp-logo.png',
-            startDate: new Date('2020-01-01'),
-            endDate: new Date('2022-01-01'),
+    const personalInfo = await prisma.personalInformation.upsert({
+        where: {
+            id: data.personalInformation.id,
+            email: data.personalInformation.email,
         },
-    })
+        update: {
+            name: data.personalInformation.name,
+            email: data.personalInformation.email,
+            title: data.personalInformation.title,
+            location: data.personalInformation.location,
+            phone: data.personalInformation.phone,
+            age: data.personalInformation.age,
+            drivingLicense: data.personalInformation.drivingLicense,
+            updatedAt: new Date(),
+            languages: {
+                deleteMany: {},
+                create: Object.entries(data.personalInformation.languages).map(([language, proficiency]) => ({
+                    language,
+                    proficiency: proficiency as string,
+                })),
+            },
+        },
+        create: {
+            name: data.personalInformation.name,
+            title: data.personalInformation.title,
+            location: data.personalInformation.location,
+            phone: data.personalInformation.phone,
+            email: data.personalInformation.email,
+            age: data.personalInformation.age,
+            drivingLicense: data.personalInformation.drivingLicense,
+            languages: {
+                create: Object.entries(data.personalInformation.languages).map(([language, proficiency]) => ({
+                    language,
+                    proficiency: proficiency as string,
+                })),
+            },
+            createdAt: new Date(),
+            updatedAt: new Date(),
+        }
+    });
 
-    const skill1 = await prisma.skill.upsert({
-        where: { id: 1 },
-        update: {},
-        create: {
-            type: 'Programming Language',
-            name: 'JavaScript',
-            icon: 'javascript-icon.png',
-        },
-    })
+    console.log('Personal Information upserted:', personalInfo);
 
-    const project1 = await prisma.project.upsert({
-        where: { id: 1 },
-        update: {},
-        create: {
-            type: 'Web Development',
-            name: 'Personal Portfolio',
-            image: 'portfolio.png',
-            description: 'A personal portfolio website to showcase my work and skills.',
-            link: 'https://myportfolio.com',
-        },
-    })
+    for (const experience of data.experiences) {
+        if (experience.id !== undefined && experience.id !== null) {
+            const exp = await prisma.experience.upsert({
+                where: {id: experience.id},
+                update: {
+                    company: experience.company,
+                    city: experience.city,
+                    role: experience.role,
+                    tasks: experience.tasks,
+                    logo: experience.logo,
+                    startDate: new Date(experience.startDate),
+                    endDate: experience.endDate ? new Date(experience.endDate) : null,
+                },
+                create: {
+                    company: experience.company,
+                    city: experience.city,
+                    role: experience.role,
+                    tasks: experience.tasks,
+                    logo: experience.logo,
+                    startDate: new Date(experience.startDate),
+                    endDate: experience.endDate ? new Date(experience.endDate) : null,
+                },
+            });
+        }
+    }
 
-    const education1 = await prisma.education.upsert({
-        where: { id: 1 },
-        update: {},
-        create: {
-            degree: 'Bachelor of Science in Computer Science',
-            institution: 'MIT',
-            details: 'Focused on software engineering and artificial intelligence.',
-            image: 'mit-logo.png',
-            link: 'https://mit.edu',
-        },
-    })
+    for (const [category, skills] of Object.entries(data.skills)) {
+        for (const skill of skills) {
+            const sk = await prisma.skills.upsert({
+                where: {
+                    id: skill.id,
+                    name: skill.name
+                },
+                update: {
+                    icon: skill.icon,
+                    updatedAt: new Date(),
+                },
+                create: {
+                    type: category,
+                    name: skill.name,
+                    icon: skill.icon,
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                }
+            });
+        }
+    }
 
-    const interest1 = await prisma.interest.upsert({
-        where: { id: 1 },
-        update: {},
-        create: {
-            name: 'Photography',
-            description: 'Passionate about capturing moments and landscapes.',
-            image: 'photography.png',
-            link: 'https://instagram.com/myphotography',
-        },
-    })
+    for (const education of data.education) {
+        const edu = await prisma.education.upsert({
+            where: {
+                id: education.id,
+                degree: education.degree
+            },
+            update: {
+                dates: education.dates,
+                details: education.details,
+                updatedAt: new Date(),
+            },
+            create: {
+                degree: education.degree,
+                institution: education.institution,
+                dates: education.dates,
+                details: education.details || '',
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            }
+        });
+    }
 
-    const reference1 = await prisma.reference.upsert({
-        where: { id: 1 },
-        update: {},
-        create: {
-            name: 'John Doe',
-            company: 'Tech Innovations',
-            role: 'Team Lead',
-            description: 'John was my team lead during my time at Tech Innovations.',
-            image: 'johndoe.png',
-            link: 'https://linkedin.com/in/johndoe',
-        },
-    })
+    for (const interest of data.interests) {
+        const inter = await prisma.interest.upsert({
+            where: {
+                id: interest.id,
+                type: interest.type
+            },
+            update: {
+                icon: interest.icon,
+                updatedAt: new Date(),
+            },
+            create: {
+                type: interest.type,
+                description: interest.description,
+                icon: interest.icon,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            }
+        });
+    }
+
+    for (const reference of data.references) {
+        const ref = await prisma.reference.upsert({
+            where: {
+                id: reference.id,
+                name: reference.name
+            },
+            update: {
+                role: reference.role,
+                description: reference.description,
+                image: reference.image,
+                link: reference.link,
+                updatedAt: new Date(),
+            },
+            create: {
+                name: reference.name,
+                company: reference.company,
+                role: reference.role,
+                description: reference.description,
+                image: reference.image,
+                link: reference.link,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            }
+        });
+    }
 
     const contactMessage1 = await prisma.contactMessage.upsert({
         where: { id: 1 },
@@ -86,17 +179,15 @@ async function main() {
             email: 'janesmith@example.com',
             message: 'Hi, I would like to collaborate on a new project. Let me know if you are interested.',
         },
-    })
-
-    console.log({ experience1, skill1, project1, education1, interest1, reference1, contactMessage1 })
+    });
 }
 
 main()
     .then(async () => {
-        await prisma.$disconnect()
+        await prisma.$disconnect();
     })
     .catch(async (e) => {
-        console.error(e)
-        await prisma.$disconnect()
-        process.exit(1)
-    })
+        console.error(e);
+        await prisma.$disconnect();
+        process.exit(1);
+    });

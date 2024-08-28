@@ -8,27 +8,50 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model Experience {
-  id          Int       @id @default(autoincrement())
-  company     String
-  city        String
-  role        String
-  description String
-  tasks       String[]
-  logo        String
-  startDate   DateTime
-  endDate     DateTime?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+model PersonalInformation {
+  id             Int        @id @default(autoincrement())
+  name           String
+  title          String
+  location       String
+  phone          String
+  email          String     @unique
+  age            Int
+  drivingLicense String
+  languages      Language[]
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
 }
 
-model Skill {
+model Language {
+  id                  Int                  @id @default(autoincrement())
+  language            String
+  proficiency         String
+  personalInfoId      Int?
+  PersonalInformation PersonalInformation? @relation(fields: [personalInfoId], references: [id])
+}
+
+model Experience {
+  id        Int       @id @default(autoincrement())
+  company   String
+  city      String
+  role      String
+  tasks     String[]
+  logo      String
+  startDate DateTime
+  endDate   DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Skills {
   id        Int      @id @default(autoincrement())
   type      String
-  name      String
+  name      String   @unique
   icon      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique([type, name])
 }
 
 model Project {
@@ -44,28 +67,26 @@ model Project {
 
 model Education {
   id          Int      @id @default(autoincrement())
-  degree      String
+  degree      String   @unique
   institution String
   details     String?
-  image       String?
-  link        String?
+  dates       String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
 model Interest {
   id          Int      @id @default(autoincrement())
-  name        String
+  type        String   @unique
   description String
-  image       String?
-  link        String?
+  icon        String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
 model Reference {
   id          Int      @id @default(autoincrement())
-  name        String
+  name        String   @unique
   company     String
   role        String
   description String
