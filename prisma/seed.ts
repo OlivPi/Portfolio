@@ -82,7 +82,7 @@ async function main() {
 
     for (const [category, skills] of Object.entries(data.skills)) {
         for (const skill of skills) {
-            const sk = await prisma.skills.upsert({
+            const sk = await prisma.skill.upsert({
                 where: {
                     id: skill.id,
                     name: skill.name
@@ -144,31 +144,28 @@ async function main() {
         });
     }
 
-    for (const reference of data.references) {
-        const ref = await prisma.reference.upsert({
-            where: {
-                id: reference.id,
-                name: reference.name
-            },
-            update: {
-                role: reference.role,
-                description: reference.description,
-                image: reference.image,
-                link: reference.link,
-                updatedAt: new Date(),
-            },
-            create: {
-                name: reference.name,
-                company: reference.company,
-                role: reference.role,
-                description: reference.description,
-                image: reference.image,
-                link: reference.link,
-                createdAt: new Date(),
-                updatedAt: new Date(),
+    const project = await prisma.project.create({
+        data: {
+            name: "Labs EP",
+            structure: "Metropole",
+            type: "Web Development",
+            description: "A project description",
+            image: "image.png",
+            skills: {
+                connectOrCreate: [
+                    {
+                        where: { name: "JavaScript" },
+                        create: { type: "Programming Language", name: "JavaScript", icon: "javascript-icon.png" }
+                    },
+                    {
+                        where: { name: "React" },
+                        create: { type: "Framework", name: "React", icon: "react-icon.png" }
+                    }
+                ]
             }
-        });
-    }
+        }
+    });
+
 
     const contactMessage1 = await prisma.contactMessage.upsert({
         where: { id: 1 },
@@ -179,7 +176,8 @@ async function main() {
             email: 'janesmith@example.com',
             message: 'Hi, I would like to collaborate on a new project. Let me know if you are interested.',
         },
-    });
+    })
+
 }
 
 main()

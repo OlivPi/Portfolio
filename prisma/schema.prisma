@@ -43,7 +43,7 @@ model Experience {
   updatedAt DateTime  @updatedAt
 }
 
-model Skills {
+model Skill {
   id        Int      @id @default(autoincrement())
   type      String
   name      String   @unique
@@ -51,18 +51,36 @@ model Skills {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  projects     Project[]      @relation("ProjectSkills")
+  ProjectSkill ProjectSkill[]
+
   @@unique([type, name])
 }
 
 model Project {
-  id          Int      @id @default(autoincrement())
-  type        String
-  name        String
-  image       String
-  description String
-  link        String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id           Int            @id @default(autoincrement())
+  type         String
+  name         String
+  image        String
+  description  String
+  structure    String
+  link         String?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  skills       Skill[]        @relation("ProjectSkills")
+  ProjectSkill ProjectSkill[]
+}
+
+model ProjectSkill {
+  id        Int     @id @default(autoincrement())
+  skillId   Int
+  projectId Int
+  skill     Skill   @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([skillId, projectId])
+  @@index([skillId], name: "skillId_idx")
+  @@index([projectId], name: "projectId_idx")
 }
 
 model Education {
@@ -80,18 +98,6 @@ model Interest {
   type        String   @unique
   description String
   icon        String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-
-model Reference {
-  id          Int      @id @default(autoincrement())
-  name        String   @unique
-  company     String
-  role        String
-  description String
-  image       String?
-  link        String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

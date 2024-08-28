@@ -1,21 +1,14 @@
-export interface Experience {
-  id: number
-  company: string
-  city: string
-  role: string
-  description: string
-  tasks: string[]
-  logo: string
-  startDate: Date
-  endDate: Date | null
-  createdAt: Date
-  updatedAt: Date
-}
+import { Prisma } from '@prisma/client';
 
-export interface Translation {
-  id: number
-  locale: string
-  key: string
-  value: string
-  experienceId: number
-}
+export const experienceSelect = Prisma.validator<Prisma.ExperienceSelect>()({
+  id: true,
+  company: true,
+  city: true,
+  role: true,
+  tasks: true,
+  logo: true,
+  startDate: true,
+  endDate: true,
+});
+
+export type ExperienceSummary = Prisma.ExperienceGetPayload<{select: typeof experienceSelect;}>;

@@ -1,6 +1,7 @@
-import { Experience as ExperienceType } from '@/lib/types/ExperiencesTypes'
+import { ExperienceSummary } from '@/lib/types/ExperiencesTypes';
+
 interface ExperiencesProps {
-  experiences: ExperienceType[]
+    experiences: ExperienceSummary[];
 }
 export default function Experiences({ experiences }: ExperiencesProps) {
 
@@ -13,8 +14,7 @@ export default function Experiences({ experiences }: ExperiencesProps) {
                           <h4 className='text-xl pr-2'>{exp.role}</h4>
                           <p className='font-bold'>{exp.company} - {exp.city}</p>
                       </div>
-                      <p className='font-light'>{exp.description}</p>
-                      <ul className='flex'>
+                      <ul className=''>
                           {exp.tasks.map((task, key) =>(
                               <li className='font-light pl-1' key={task}>/ {task} </li>
                               ))

@@ -1,16 +1,28 @@
-import { Skills as SkillType } from '@/lib/types/SkillTypes'
+import {SkillsSummary} from '@/lib/types/SkillsTypes'
 interface SkillListProps {
-  skills: SkillType[]
+  skills: SkillsSummary[];
 }
 
 export default function Skill({ skills }: SkillListProps) {
+  const skillsByType = skills.reduce((acc, skill) => {
+    if (!acc[skill.type]) {
+      acc[skill.type] = [];
+    }
+    acc[skill.type].push(skill);
+    return acc;
+  }, {} as Record<string, SkillsSummary[]>);
   return (
-    <ul>
-        {skills.map((skill, key)=>(
-            <li key={skill.id}>
-                <p>{skill.name}</p>
-            </li>
-        ))}
-    </ul>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+      {Object.entries(skillsByType).map(([type, skills]) => (
+          <div key={type}>
+            <h3 className='text-xl font-bold'>{type}</h3>
+            <ul>
+              {skills.map((skill) => (
+                  <li key={skill.id}>{skill.name}</li>
+              ))}
+            </ul>
+          </div>
+      ))}
+    </div>
   )
 }
