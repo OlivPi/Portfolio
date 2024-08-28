@@ -19,7 +19,7 @@ export default async function HomePage () {
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Compétences</h2>
         <div>
-            <Skill skills={skills} />
+            <Skill skill={skills} />
         </div>
       </section>
 

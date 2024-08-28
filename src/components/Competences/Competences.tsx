@@ -1,6 +1,6 @@
 import {SkillsSummary} from '@/lib/types/SkillsTypes'
 interface SkillListProps {
-  skills: SkillsSummary[];
+  skill: SkillsSummary[];
 }
 
 export default function Skill({ skills }: SkillListProps) {
