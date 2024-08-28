@@ -15,20 +15,55 @@
   },
   "summary": "Spécialisé en React et WordPress, je dispose d’une expérience solide dans la réalisation de projets web. Alliant expertise en développement front-end et gestion de projet, j’ai conduit de nombreux projets, assurant à la fois leur conception technique et leur gestion opérationnelle.",
   "skills": {
-    "frontEnd": ["HTML 5", "SASS (LESS)", "JavaScript (ES6)", "React", "Redux", "Next.js", "TypeScript", "Styled-Component", "Kepler.gl", "WordPress"],
-    "backEnd": ["Node.js", "Express"],
-    "databases": ["SQL", "Mongo DB"],
-    "workflow": ["GIT", "Github", "Gitlab"],
-    "api": ["OpenCage Geocoding", "IGN Géoservices", "OpenWeatherMap", "News API"],
-    "tools": ["Notion", "AirTable", "Trello", "Jira", "Slack", "Microsoft Teams"]
+    "frontEnd": [
+      { "name": "HTML 5", "icon": "html5-icon.png" },
+      { "name": "SASS (LESS)", "icon": "sass-icon.png" },
+      { "name": "JavaScript (ES6)", "icon": "javascript-icon.png" },
+      { "name": "React", "icon": "react-icon.png" },
+      { "name": "Redux", "icon": "redux-icon.png" },
+      { "name": "Next.js", "icon": "nextjs-icon.png" },
+      { "name": "TypeScript", "icon": "typescript-icon.png" },
+      { "name": "Styled-Component", "icon": "styled-components-icon.png" },
+      { "name": "Kepler.gl", "icon": "kepler-icon.png" },
+      { "name": "WordPress", "icon": "wordpress-icon.png" }
+    ],
+    "backEnd": [
+      { "name": "Node.js", "icon": "nodejs-icon.png" },
+      { "name": "Express", "icon": "express-icon.png" }
+    ],
+    "databases": [
+      { "name": "SQL", "icon": "sql-icon.png" },
+      { "name": "Mongo DB", "icon": "mongodb-icon.png" }
+    ],
+    "workflow": [
+      { "name": "GIT", "icon": "git-icon.png" },
+      { "name": "Github", "icon": "github-icon.png" },
+      { "name": "Gitlab", "icon": "gitlab-icon.png" }
+    ],
+    "api": [
+      { "name": "OpenCage Geocoding", "icon": "opencage-icon.png" },
+      { "name": "IGN Géoservices", "icon": "ign-icon.png" },
+      { "name": "OpenWeatherMap", "icon": "openweathermap-icon.png" },
+      { "name": "News API", "icon": "newsapi-icon.png" }
+    ],
+    "tools": [
+      { "name": "Notion", "icon": "notion-icon.png" },
+      { "name": "AirTable", "icon": "airtable-icon.png" },
+      { "name": "Trello", "icon": "trello-icon.png" },
+      { "name": "Jira", "icon": "jira-icon.png" },
+      { "name": "Slack", "icon": "slack-icon.png" },
+      { "name": "Microsoft Teams", "icon": "teams-icon.png" }
+    ]
   },
   "experiences": [
     {
-      "title": "Développeur Front-End & Chef de Projet (Free-lance, Lyon)",
+      "id": 1,
+      "role": "Développeur Front-End & Chef de Projet",
       "company": "Free-lance",
-      "location": "Lyon",
-      "startDate": "2017-O7",
-      "endDate": "2022-O7",
+      "city": "Lyon",
+      "logo": "logo.jpg",
+      "startDate": "2017-07",
+      "endDate": "2022-07",
       "tasks": [
         "Conception et développement de sites web",
         "Gestion complète de projets pour des clients variés",
@@ -37,10 +72,12 @@
       ]
     },
     {
-      "title": "Développeur Front-End React",
+      "id": 2,
+      "role": "Développeur Front-End React",
       "company": "Norgay",
-      "location": "Lyon",
-      "startDate": "2019-O9",
+      "city": "Lyon",
+      "logo": "logo.jpg",
+      "startDate": "2019-09",
       "endDate": "2020-11",
       "tasks": [
         "Développement du projet Datatlas pour Erasme",
@@ -49,11 +86,13 @@
       ]
     },
     {
-      "title": "Développeur Front-End - Chargé de Développement",
+      "id": 3,
+      "role": "Développeur Front-End - Chargé de Développement",
       "company": "Agence Akumaw",
-      "location": "Lyon",
+      "city": "Lyon",
+      "logo": "logo.jpg",
       "startDate": "2021-12",
-      "endDate": "2024-O3",
+      "endDate": "2024-03",
       "tasks": [
         "Gestion des projets front-end",
         "Coordination avec les équipes créatives",
@@ -61,11 +100,13 @@
       ]
     },
     {
-      "title": "Chargé de Développement",
+      "id": 4,
+      "role": "Chargé de Développement",
       "company": "René Pierre Location",
-      "location": "Lyon",
+      "city": "Lyon",
       "dates": "06/16 - 10/16",
-      "startDate": "2016-O6",
+      "logo": "logo.jpg",
+      "startDate": "2016-06",
       "endDate": "2016-10",
       "tasks": [
         "Création du site web",
@@ -94,7 +135,33 @@
     }
   ],
   "interests": [
-    "Musique : DJ, sous les pseudonymes STONN et Minimum Djs.",
-    "Basketball : Diplôme d’animateur basket, FFB. Entraîneur de basket (09/01-06/05)"
+    {
+      "type": "Musique",
+      "description": "DJ, sous les pseudonymes STONN et Minimum Djs.",
+      "icon": "dj-icon.png"
+    },
+    {
+      "type": "Basketball",
+      "description": "Diplôme d’animateur basket, FFB. Entraîneur de basket (09/01-06/05)",
+      "icon": "ballon-icon.png"
+    }
+  ],
+  "references": [
+    {
+      "name": "John Doe",
+      "company": "Tech Innovations",
+      "role": "Team Lead",
+      "description": "John was my team lead during my time at Tech Innovations.",
+      "image": "johndoe.png",
+      "link": "https://linkedin.com/in/johndoe"
+    },
+    {
+      "name": "Jane Smith",
+      "company": "Creative Solutions",
+      "role": "Project Manager",
+      "description": "Jane managed several projects I was involved in.",
+      "image": "janesmith.png",
+      "link": "https://linkedin.com/in/janesmith"
+    }
   ]
 }

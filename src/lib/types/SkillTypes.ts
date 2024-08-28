@@ -1,5 +1,6 @@
-export interface Skill {
+export interface Skills {
   id: number
+  name_type: object
   type: string
   name: string
   icon: string
