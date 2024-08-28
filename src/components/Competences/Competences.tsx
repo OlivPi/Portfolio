@@ -17,7 +17,7 @@ export default function Skill({ skill }: SkillListProps) {
           <div key={type}>
             <h3 className='text-xl font-bold'>{type}</h3>
             <ul>
-              {skills.map((skill) => (
+              {skill.map((skill) => (
                   <li key={skill.id}>{skill.name}</li>
               ))}
             </ul>
