@@ -6,7 +6,6 @@ import { getExperiences, getSkills } from '@/lib/fetchData'
 export default async function HomePage () {
     const experiences = await getExperiences()
     const skills = await getSkills()
-
   return (
     <main className="container mx-auto p-6">
       <section className="text-center mb-8">
@@ -19,18 +18,14 @@ export default async function HomePage () {
 
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Compétences</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                 {skills.map((skill) => (
-            <Skill key={skill.id} skills={skill} />
-          ))}
+        <div>
+            <Skill skills={skills} />
         </div>
       </section>
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Expériences Récentes</h2>
-
         <Experience experiences={experiences} />
-
       </section>
     </main>
   )
