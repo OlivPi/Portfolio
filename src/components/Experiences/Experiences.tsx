@@ -16,7 +16,7 @@ export default function Experiences({ experiences }: ExperiencesProps) {
                       <p className='font-light'>{exp.description}</p>
                       <ul className='flex'>
                           {exp.tasks.map((task, key) =>(
-                              <li className='font-light pl-1'>/ {task} </li>
+                              <li className='font-light pl-1' key={task}>/ {task} </li>
                               ))
                           }
                       </ul>
