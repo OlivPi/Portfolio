@@ -28,7 +28,8 @@
     "**/*.ts", "**/*.tsx",
     ".next/types/**/*.ts",
     "prisma",
-    "global.d.ts"
+    "src/lib/types/types.d.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "files": ["src/lib/types/types.d.ts"],
 }
