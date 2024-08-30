@@ -1,10 +1,9 @@
 import { Prisma } from '@prisma/client';
-import {tree} from "next/dist/build/templates/app-page";
 
-export const skillsSelect = Prisma.validator<Prisma.SkillsSelect>()({
+export const skillsSelect = Prisma.validator<Prisma.SkillSelect>()({
   id: true,
   type: true,
   name: true,
   icon: true
 })
-export type SkillsSummary = Prisma.SkillsGetPayload<{ select: typeof skillsSelect}>
+export type SkillsSummary = Prisma.SkillGetPayload<{ select: typeof skillsSelect}>
