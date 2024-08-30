@@ -143,7 +143,7 @@ async function main() {
             }
         });
     }
-
+    try {
     const project = await prisma.project.create({
         data: {
             name: "Labs EP",
@@ -152,19 +152,17 @@ async function main() {
             description: "A project description",
             image: "image.png",
             skills: {
-                connectOrCreate: [
-                    {
-                        where: { name: "JavaScript" },
-                        create: { type: "Programming Language", name: "JavaScript", icon: "javascript-icon.png" }
-                    },
-                    {
-                        where: { name: "React" },
-                        create: { type: "Framework", name: "React", icon: "react-icon.png" }
-                    }
-                ]
+                connect: [
+                    { name: "JavaScript" },
+                    { name: "React" }
+                ],
             }
         }
     });
+    console.log('Project created with associated skills:', project);
+} catch (error) {
+    console.error('Error creating project with skills:', error);
+}
 
 
     const contactMessage1 = await prisma.contactMessage.upsert({
