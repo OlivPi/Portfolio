@@ -6,7 +6,6 @@ import clsx from 'clsx'
 
 const links = [
   { href: '/web-projects', name: 'Projets Web' },
-  { href: '/reference', name: 'Expériences' },
   { href: '/event-com', name: "Évenementiel et communication" },
   { href: '/contact', name: 'Contact' },
 
@@ -16,16 +15,16 @@ export default function Menu() {
   const pathname = usePathname()
 
   return (
-    <div className={'flex grow'}>
+    <nav className={'flex-col'}>
       {links.map((link) => {
         return (
           <Link
             key={link.name}
             href={link.href}
             className={clsx(
-              'flex grow items-center justify-center rounded-md p-3 text-sm font-medium hover:bg-sky-100 hover:text-black',
+              'flex justify-end p-1 text-base font-medium hover:text-secondary',
               {
-                'bg-sky-100 text-blue-600': pathname === link.href,
+                'text-secondary': pathname === link.href,
               }
             )}
           >
@@ -33,6 +32,6 @@ export default function Menu() {
           </Link>
         )
       })}
-    </div>
+    </nav>
   )
 }

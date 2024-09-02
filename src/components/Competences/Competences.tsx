@@ -12,13 +12,13 @@ export default function Skill({ skill }: SkillListProps) {
     return acc;
   }, {});
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+    <div className='w-1/2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
       {Object.entries(skillsByType).map(([type, skills]) => (
           <div key={type}>
             <h3 className='text-xl font-bold'>{type}</h3>
-            <ul>
+            <ul className={'flex flex-wrap'}>
               {skills.map((skill) => (
-                  <li key={skill.id}>{skill.name}</li>
+                  <li className={'px-1'} key={skill.id}>{skill.name}</li>
               ))}
             </ul>
           </div>
