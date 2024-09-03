@@ -86,6 +86,7 @@
   },
   "experiences": [
     {
+      "id": 1,
       "role": "Développeur Front-End & Chef de Projet",
       "company": "Free-lance",
       "city": "Lyon",
@@ -100,6 +101,7 @@
       ]
     },
     {
+      "id": 2,
       "role": "Développeur Front-End React",
       "company": "Norgay",
       "city": "Lyon",
@@ -113,6 +115,7 @@
       ]
     },
     {
+      "id": 3,
       "role": "Développeur Front-End - Chargé de Développement",
       "company": "Agence Akumaw",
       "city": "Lyon",
@@ -126,6 +129,7 @@
       ]
     },
     {
+      "id": 4,
       "role": "Chargé de Développement",
       "company": "René Pierre Location",
       "city": "Lyon",
@@ -140,6 +144,7 @@
       ]
     },
     {
+      "id": 5,
       "role": "Coordinateur Général et Programmateur",
       "company": "Festival Les Musicaves",
       "city": "Givry (71)",
@@ -154,6 +159,7 @@
       ]
     },
     {
+      "id": 6,
       "role": "Chargé de Communication Web - Graphiste",
       "company": "Festival FESTBOUC ",
       "city": "Chassagny (69)",
@@ -167,6 +173,7 @@
       ]
     },
     {
+      "id": 7,
       "role": "Président Co-Fondateur",
       "company": "Paraplui",
       "city": "Lyon (69)",
@@ -182,6 +189,7 @@
       ]
     },
     {
+      "id": 8,
       "role": "Chargé de Communication et Programmation",
       "company": "DV1 Club",
       "city": "Lyon (69)",
@@ -196,6 +204,7 @@
       ]
     },
     {
+      "id": 9,
       "role": "Formateur, WordPress - Réseaux Sociaux - Webdesign - UI/UX - HTML/CSS",
       "company": "ESD, EFAP, ISEG, ESCEN, CCI",
       "city": "Lyon (69)",

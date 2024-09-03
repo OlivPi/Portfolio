@@ -53,7 +53,10 @@ async function main() {
     for (const experience of data.experiences) {
         if (experience.id !== undefined && experience.id !== null) {
             const exp = await prisma.experience.upsert({
-                where: {id: experience.id},
+                where: {
+                    id: experience.id,
+                    company: experience.company
+                },
                 update: {
                     company: experience.company,
                     city: experience.city,
@@ -74,6 +77,7 @@ async function main() {
                 },
             });
         }
+        console.log(`Expériences upserted: ${experience.company}`);
     }
 
     for (const [category, skills] of Object.entries(data.skills)) {
