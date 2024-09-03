@@ -1,0 +1,21 @@
+.container{
+  @apply my-10;
+  div {
+    div {
+      div {
+        @apply flex flex-col;
+        h4 {
+          @apply text-xl pr-2;
+        }
+        p {
+          @apply font-bold;
+        }
+      }
+      ul{
+        li{
+          @apply font-light pl-1;
+        }
+      }
+    }
+  }
+}

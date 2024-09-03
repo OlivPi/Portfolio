@@ -52,8 +52,6 @@ async function main() {
         }
     });
 
-    console.log('Personal Information upserted:', personalInfo);
-
     for (const experience of data.experiences) {
         if (experience.id !== undefined && experience.id !== null) {
             const exp = await prisma.experience.upsert({
