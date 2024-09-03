@@ -60,7 +60,7 @@ model Skill {
 model Project {
   id           Int            @id @default(autoincrement())
   type         String
-  name         String
+  name         String         @unique
   image        String
   description  String
   structure    String
