@@ -1,6 +1,6 @@
 export default function ProjectCard() {
   return (
-    <div className="card">
+    <div>
         <ul>
             <li>Projet 1</li>
             <li>Projet 2</li>

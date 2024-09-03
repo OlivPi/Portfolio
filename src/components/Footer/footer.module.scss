@@ -1,0 +1,7 @@
+.container{
+  @apply flex justify-between items-end h-40;
+  div{
+    @apply flex space-x-2;
+  }
+
+}

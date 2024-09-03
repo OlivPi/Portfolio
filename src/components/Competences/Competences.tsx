@@ -1,4 +1,5 @@
 import {SkillsSummary} from '@/lib/types/SkillsTypes'
+import styles from './skils.module.scss';
 interface SkillListProps {
   skill: SkillsSummary[];
 }
@@ -12,13 +13,13 @@ export default function Skill({ skill }: SkillListProps) {
     return acc;
   }, {});
   return (
-    <div className='w-1/2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+    <div className={styles.container}>
       {Object.entries(skillsByType).map(([type, skills]) => (
           <div key={type}>
-            <h3 className='text-xl font-bold'>{type}</h3>
-            <ul className={'flex flex-wrap'}>
+            <h3>{type}</h3>
+            <ul>
               {skills.map((skill) => (
-                  <li className={'px-1'} key={skill.id}>{skill.name}</li>
+                  <li key={skill.id}>{skill.name}</li>
               ))}
             </ul>
           </div>

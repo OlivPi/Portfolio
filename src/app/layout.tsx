@@ -3,6 +3,7 @@ import '@/app/ui/global.scss'
 import {ibm_plex, roboto_mono} from "@/app/ui/fonts";
 import Header from "@/components/Header/Header";
 import {getPersonalInformations} from "@/lib/fetchData";
+import Footer from "@/components/Footer/Footer";
 
 export const metadata: Metadata = {
   title: 'Olivier Pierre - Portfolio',
@@ -20,6 +21,7 @@ export default async function RootLayout({
       <body>
         <Header personalInformation={personalInformation}/>
         <main>{children}</main>
+      <Footer/>
       </body>
     </html>
   )

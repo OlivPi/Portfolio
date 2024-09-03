@@ -1,0 +1,10 @@
+.container{
+
+  p{
+    @apply w-full lg:w-1/2;
+  }
+
+  img{
+    @apply mt-12;
+  }
+}

@@ -1,7 +1,9 @@
-.shape {
-    height: 0;
-    width: 0;
-    border-bottom: 30px solid white;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
+.containerHome{
+    .skillsSection{
+        @apply flex flex-col items-end py-8 sm:p-0 sm:-translate-y-28;
+    }
+
+    h2{
+        @apply text-2xl font-semibold mb-4;
+    }
 }
