@@ -6,14 +6,12 @@ import {ResumeData} from "@/lib/types/resumeTypes";
 const prisma = new PrismaClient();
 
 async function main() {
-    // Charger les données JSON
     const filePath = path.join(process.cwd(), 'data', 'resumeData.json');
     const jsonData = await fs.readFile(filePath, 'utf8');
     const data : ResumeData = JSON.parse(jsonData);
 
     const personalInfo = await prisma.personalInformation.upsert({
         where: {
-            id: data.personalInformation.id,
             email: data.personalInformation.email,
         },
         update: {
@@ -82,7 +80,6 @@ async function main() {
         for (const skill of skills) {
             const sk = await prisma.skill.upsert({
                 where: {
-                    id: skill.id,
                     name: skill.name
                 },
                 update: {
@@ -120,6 +117,7 @@ async function main() {
                 updatedAt: new Date(),
             }
         });
+        console.log(`Education upserted: ${education.degree}`);
     }
 
     for (const interest of data.interests) {
@@ -141,27 +139,43 @@ async function main() {
             }
         });
     }
-    try {
-    const project = await prisma.project.create({
-        data: {
-            name: "Labs EP",
-            structure: "Metropole",
-            type: "Web Development",
-            description: "A project description",
-            image: "image.png",
-            skills: {
-                connect: [
-                    { name: "JavaScript" },
-                    { name: "React" }
-                ],
-            }
+        for (const projectData of data.projects) {
+            const project = await prisma.project.upsert({
+                where: {
+                    id: projectData.id,
+                    name: projectData.name
+                },
+                update: {
+                    type: projectData.type,
+                    description: projectData.description,
+                    image: projectData.image,
+                    structure: projectData.structure,
+                    link: projectData.link,
+                    skills: {
+                        connect: projectData.skills.map((skillName: string) => ({
+                            name: skillName
+                        }))
+                    },
+                    updatedAt: new Date()
+                },
+                create: {
+                    name: projectData.name,
+                    type: projectData.type,
+                    description: projectData.description,
+                    image: projectData.image,
+                    structure: projectData.structure,
+                    link: projectData.link,
+                    skills: {
+                        connect: projectData.skills.map((skillName: string) => ({
+                            name: skillName
+                        }))
+                    },
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                }
+            });
+            console.log(`Project upserted: ${project.name}`);
         }
-    });
-    console.log('Project created with associated skills:', project);
-} catch (error) {
-    console.error('Error creating project with skills:', error);
-}
-
 
     const contactMessage1 = await prisma.contactMessage.upsert({
         where: { id: 1 },
