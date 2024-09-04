@@ -1,18 +1,13 @@
-export interface Project {
-  id: number
-  type: string
-  name: string
-  image: string
-  description: string
-  link: string | null
-  createdAt: Date
-  updatedAt: Date
-}
+import {Prisma} from '@prisma/client';
 
-export interface Translation {
-  id: number
-  locale: string
-  key: string
-  value: string
-  projectId: number
-}
+export const projectSelect = Prisma.validator<Prisma.ProjectSelect>()({
+  id: true,
+  type: true,
+  name: true,
+  image: true,
+  description: true,
+  structure: true,
+  link: true,
+  skills: true,
+})
+export type ProjectSummary = Prisma.ProjectGetPayload<{select: typeof projectSelect}>

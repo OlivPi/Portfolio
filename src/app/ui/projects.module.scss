@@ -1,0 +1,8 @@
+.container{
+  h1{
+    @apply text-3xl font-bold mb-8;
+  }
+  .containerProjects{
+    @apply grid grid-cols-1 md:grid-cols-2 gap-10;
+  }
+}

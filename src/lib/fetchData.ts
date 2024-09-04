@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client'
 import { ExperienceSummary, experienceSelect } from '@/lib/types/ExperiencesTypes';
 import {skillsSelect, SkillsSummary} from "@/lib/types/SkillsTypes";
 import {personalInformationSelect, PersonalInformationSummary} from "@/lib/types/PersonalInformation";
+import {projectSelect, ProjectSummary} from "@/lib/types/ProjectTypes";
 
 const prisma = new PrismaClient()
 
@@ -23,11 +24,9 @@ export async function getPersonalInformations(): Promise<PersonalInformationSumm
   })
 }
 
-export async function getProjects() {
-  try {
-      return await prisma.project.findMany()
-  } catch (error) {
-    console.error('Erreur lors de la récupération des projets:', error)
-    return []
-  }
+export async function getProjects(type: string): Promise<ProjectSummary[]> {
+       return prisma.project.findMany({
+         where: { type },
+        select: projectSelect
+      })
 }

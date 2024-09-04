@@ -1,0 +1,18 @@
+.card{
+    @apply flex flex-col;
+      @apply p-3;
+      h3{
+        @apply text-3xl py-1.5;
+    }
+  ul{
+    @apply flex;
+    li{
+      @apply bg-secondary py-1 px-2 rounded mr-3 my-1.5;
+    }
+  }
+  h4{
+    span{
+      @apply font-bold;
+    }
+  }
+}
