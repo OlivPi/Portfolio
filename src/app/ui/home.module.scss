@@ -1,9 +1,18 @@
 .containerHome{
     .skillsSection{
         @apply flex flex-col items-end py-8 sm:p-0 sm:-translate-y-28;
+
+        h3{
+            @apply self-center text-2xl font-medium pt-4;
+        }
+        .skillsContainer{
+            @apply w-full md:w-3/5 columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 my-4;
+
+        }
+
     }
 
     h2{
-        @apply text-2xl font-semibold mb-4;
+        @apply text-3xl font-medium mb-4;
     }
 }

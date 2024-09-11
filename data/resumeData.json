@@ -25,10 +25,14 @@
       { "name": "TypeScript", "icon": "typescript-icon.png" },
       { "name": "Styled-Component", "icon": "styled-components-icon.png" },
       { "name": "Kepler.gl", "icon": "kepler-icon.png" },
-      { "name": "WordPress", "icon": "wordpress-icon.png" }
+      { "name": "Leaflet", "icon": "leaflet-icon.png" },
+      { "name": "GSAP", "icon": "leaflet-icon.png" },
+      { "name": "WordPress", "icon": "wordpress-icon.png" },
+      { "name": "Elementor", "icon": "elementor-icon.png" }
     ],
     "backEnd": [
       { "name": "Node.js", "icon": "nodejs-icon.png" },
+      { "name": "Docker", "icon": "docker-icon.png" },
       { "name": "Express", "icon": "express-icon.png" }
     ],
     "databases": [
@@ -52,7 +56,32 @@
       { "name": "Trello", "icon": "trello-icon.png" },
       { "name": "Jira", "icon": "jira-icon.png" },
       { "name": "Slack", "icon": "slack-icon.png" },
+      { "name": "Photoshop", "icon": "photoshop-icon.png" },
+      { "name": "Illustrator", "icon": "illustrator-icon.png" },
+      { "name": "Indesign", "icon": "indesign-icon.png" },
+      { "name": "Figma", "icon": "figma-icon.png" },
+      { "name": "Webstorm", "icon": "webstorm-icon.png" },
+      { "name": "VS Code", "icon": "vscode-icon.png" },
       { "name": "Microsoft Teams", "icon": "teams-icon.png" }
+    ],
+    "communication": [
+      { "name": "Élaboration de stratégies de communication", "icon": "strat-icon.png" },
+      { "name": "Community management et engagement des publics", "icon": "cm-icon.png" },
+      { "name": "Conception de supports visuels", "icon": "graphisme-icon.png" }
+    ],
+    "projectManage": [
+      { "name": "Planification et pilotage de projets web", "icon": "plan-icon.png" },
+      { "name": "Coordination d’équipes techniques et créatives", "icon": "coordo-icon.png" },
+      { "name": "Gestion des ressources et des délais", "icon": "budget-icon.png" },
+      { "name": "Suivi de la qualité et des performances", "icon": "perf-icon.png" }
+    ],
+    "event": [
+      { "name": "Programmation artistique et culturelle", "icon": "plan-icon.png" },
+      { "name": "Développement et gestion de projets culturels innovants", "icon": "coordo-icon.png" },
+      { "name": "Coordination d’événements artistiques", "icon": "budget-icon.png" },
+      { "name": "Planification et gestion de projets complexes", "icon": "perf-icon.png" },
+      { "name": "Suivi des budgets et des ressources", "icon": "perf-icon.png" },
+      { "name": "Coordination d’équipes pluridisciplinaires", "icon": "perf-icon.png" }
     ]
   },
   "experiences": [
@@ -63,7 +92,7 @@
       "city": "Lyon",
       "logo": "logo.jpg",
       "startDate": "2017-07",
-      "endDate": "2022-07",
+      "endDate": "",
       "tasks": [
         "Conception et développement de sites web",
         "Gestion complète de projets pour des clients variés",
@@ -113,6 +142,79 @@
         "Stratégie de développement commercial",
         "Gestion des partenariats numériques"
       ]
+    },
+    {
+      "id": 5,
+      "role": "Coordinateur Général et Programmateur",
+      "company": "Festival Les Musicaves",
+      "city": "Givry (71)",
+      "dates": "Depuis 2023",
+      "logo": "logo.jpg",
+      "startDate": "2023-01",
+      "endDate": "",
+      "tasks": [
+        "Direction générale du festival",
+        "Programmation et direction artistique",
+        "coordination de la communication, la logistique et des équipes"
+      ]
+    },
+    {
+      "id": 6,
+      "role": "Chargé de Communication Web - Graphiste",
+      "company": "Festival FESTBOUC ",
+      "city": "Chassagny (69)",
+      "dates": "06/16 - 10/16",
+      "logo": "logo.jpg",
+      "startDate": "2016-06",
+      "endDate": "2016-10",
+      "tasks": [
+        "Élaboration et exécution de la stratégie de communication visuel et digitale",
+        "Gestion et administration des bars sur l’exploitation"
+      ]
+    },
+    {
+      "id": 7,
+      "role": "Président Co-Fondateur",
+      "company": "Paraplui",
+      "city": "Lyon (69)",
+      "dates": "Depuis 2014",
+      "logo": "logo.jpg",
+      "startDate": "2014-001",
+      "endDate": "",
+      "tasks": [
+        "Gestion de la production et programmation artistique d’événements",
+        "Création et organisation d'évènements",
+        "Direction artistique",
+        "Création de podcasts"
+      ]
+    },
+    {
+      "id": 8,
+      "role": "Chargé de Communication et Programmation",
+      "company": "DV1 Club",
+      "city": "Lyon (69)",
+      "dates": "11/13 - 04/15",
+      "logo": "logo.jpg",
+      "startDate": "2013-11",
+      "endDate": "2015-04",
+      "tasks": [
+        "Développement de la stratégie de communication du club",
+        "Programmation d’artistes",
+        "Accueil et gestion des relations avec les artistes"
+      ]
+    },
+    {
+      "id": 9,
+      "role": "Formateur, WordPress - Réseaux Sociaux - Webdesign - UI/UX - HTML/CSS",
+      "company": "ESD, EFAP, ISEG, ESCEN, CCI",
+      "city": "Lyon (69)",
+      "dates": "09/18 - 07/22",
+      "logo": "logo.jpg",
+      "startDate": "2018-09",
+      "endDate": "2022-07",
+      "tasks": [
+        "Création de sites web WordPress, UX/UI design et des réseaux sociaux"
+      ]
     }
   ],
   "education": [
@@ -146,22 +248,69 @@
       "icon": "ballon-icon.png"
     }
   ],
-  "references": [
+  "projects": [
     {
-      "name": "John Doe",
-      "company": "Tech Innovations",
-      "role": "Team Lead",
-      "description": "John was my team lead during my time at Tech Innovations.",
-      "image": "johndoe.png",
-      "link": "https://linkedin.com/in/johndoe"
+      "type": "Développement web",
+      "name": "Le Lab des Espaces Publics",
+      "image": "labs-ep-image.png",
+      "description": "Développement d'un site WordPress avec le biolerplate Bedrock (Roots.io), incluant un thème custom, bloc Gutenberg custom, et cartographie.",
+      "structure": "Metropole de Lyon",
+      "link": "https://labdesespacespublics.grandlyon.com/",
+      "skills": ["WordPress","JavaScript (ES6)", "React", "Leaflet", "Docker"]
     },
     {
-      "name": "Jane Smith",
-      "company": "Creative Solutions",
-      "role": "Project Manager",
-      "description": "Jane managed several projects I was involved in.",
-      "image": "janesmith.png",
-      "link": "https://linkedin.com/in/janesmith"
+      "type": "Développement web",
+      "name": "DatAtlas",
+      "image": "datatlasr-image.png",
+      "description": "Datatlas est un outil de cartographie web interactif, développé sous React.js avec Kepler.gl",
+      "structure": "ERASME - Metropole de Lyon",
+      "link": "https://datagora.erasme.org/projets/datatlas/",
+      "skills": ["React", "Kepler.gl", "TypeScript"]
+    },
+    {
+      "type": "Développement web",
+      "name": "Hotel Outa",
+      "image": "hotelouta-image.png",
+      "description": "Développement d'un site WordPress avec un thème custom et bloc Gutenberg custom",
+      "structure": "Hotel Outa",
+      "link": "https://hotel-outa.com/",
+      "skills": ["WordPress","JavaScript (ES6)", "GSAP"]
+    },
+    {
+      "type": "Développement web",
+      "name": "Agence Mioov",
+      "image": "mioov-image.png",
+      "description": "Développement d'un site WordPress avec Elementor",
+      "structure": "Mioov",
+      "link": "https://mioov.com/",
+      "skills": ["WordPress","Elementor"]
+    },
+    {
+      "type": "Développement web",
+      "name": "les Musicaves",
+      "image": "musicaves-image.png",
+      "description": "Développement d'un site WordPress avec Elementor pour un festival",
+      "structure": "Festival les Musicaves",
+      "link": "https://lesmusicaves.fr/",
+      "skills": ["WordPress","Elementor"]
+    },
+    {
+      "type": "Événement",
+      "name": "Festival les Musicaves",
+      "image": "festival-musicaves-image.png",
+      "description": "Coordination générale et programmation artistique",
+      "structure": "Festival les Musicaves",
+      "link": "https://lesmusicaves.fr/",
+      "skills": ["Programmation artistique et culturelle","Suivi des budgets et des ressources", "Coordination d’équipes pluridisciplinaires"]
+    },
+    {
+      "type": "Événement",
+      "name": "Extra NS - La Mondialette",
+      "image": "mondialette-image.png",
+      "description": "Organisation d'un évènement rassemblant tournoi de baby-foot, coucours de Air Célébration, musique ...",
+      "structure": "Paraplui",
+      "link": "https://2018.nuits-sonores.com/les-programmes/extra-la-mondialette/",
+      "skills": ["Programmation artistique et culturelle","Suivi des budgets et des ressources", "Coordination d’équipes pluridisciplinaires"]
     }
   ]
 }
