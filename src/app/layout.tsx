@@ -8,6 +8,7 @@ import Footer from "@/components/Footer/Footer";
 export const metadata: Metadata = {
   title: 'Olivier Pierre - Portfolio',
   description: 'Chef de projet et développeur front-end',
+  icons: { icon: '/favicon.ico' },
 }
 
 export default async function RootLayout({

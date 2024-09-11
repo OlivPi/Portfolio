@@ -3,9 +3,10 @@ import styles from './skils.module.scss';
 import { formatType } from '@/utils/formatLabelTypes';
 interface SkillListProps {
   skill: SkillsSummary[];
+  title: string;
 }
 
-export default function Skill({ skill }: SkillListProps) {
+export default function Skill({ skill, title }: SkillListProps) {
   const skillsByType = skill.reduce<Record<string, SkillsSummary[]>>((acc, skill) => {
     const formattedType = formatType(skill.type);
     if (!acc[formattedType]) {
@@ -15,11 +16,10 @@ export default function Skill({ skill }: SkillListProps) {
     return acc;
   }, {});
   return (
-    <div className={styles.container}>
+    <>
       {Object.entries(skillsByType).map(([type, skills]) => (
-          <div key={type}>
-
-            <h3>{type}</h3>
+          <div className={styles.container} key={type}>
+            <h4>{type}</h4>
             <ul>
               {skills.map((skill) => (
                   <li key={skill.id}>{skill.name} /</li>
@@ -27,6 +27,6 @@ export default function Skill({ skill }: SkillListProps) {
             </ul>
           </div>
       ))}
-    </div>
+    </>
   )
 }
