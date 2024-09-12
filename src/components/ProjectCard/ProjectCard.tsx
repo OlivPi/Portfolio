@@ -13,7 +13,7 @@ export default function ProjectCard({projects}: ProjectsProps) {
     <div key={project.id} className={styles.card}>
       <Link href={project.link as string} passHref={true} target={'_blank'} rel={'noopener noreferrer'}>
         <Image
-          src={HotelOutal}
+          src={`/projects/${project.image}`}
           alt={project.name}
           sizes="100vw"
           style={{

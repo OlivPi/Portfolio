@@ -81,7 +81,8 @@
       { "name": "Coordination d’événements artistiques", "icon": "budget-icon.png" },
       { "name": "Planification et gestion de projets complexes", "icon": "perf-icon.png" },
       { "name": "Suivi des budgets et des ressources", "icon": "perf-icon.png" },
-      { "name": "Coordination d’équipes pluridisciplinaires", "icon": "perf-icon.png" }
+      { "name": "Coordination d’équipes pluridisciplinaires", "icon": "perf-icon.png" },
+      {"name":  "Gestion et administration de bars", "icon": "bar-icon.png"}
     ]
   },
   "experiences": [
@@ -305,9 +306,19 @@
     },
     {
       "type": "Événement",
-      "name": "Extra NS - La Mondialette",
-      "image": "mondialette-image.png",
-      "description": "Organisation d'un évènement rassemblant tournoi de baby-foot, coucours de Air Célébration, musique ...",
+      "name": "Festival Festbouc",
+      "image": "festbouc-image.png",
+      "description": "Festival Solidaire et Responsable.",
+      "structure": "Paraplui",
+      "link": "https://2018.nuits-sonores.com/les-programmes/extra-la-mondialette/",
+      "skills": ["Programmation artistique et culturelle","Conception de supports visuels",
+        "Gestion et administration de bars"]
+    },
+    {
+      "type": "Événement",
+      "name": "Extra NS",
+      "image": "ns-image.png",
+      "description": "La Mondialette / Will you Marry Me / Championnat du Monde de Chaises Musicales",
       "structure": "Paraplui",
       "link": "https://2018.nuits-sonores.com/les-programmes/extra-la-mondialette/",
       "skills": ["Programmation artistique et culturelle","Suivi des budgets et des ressources", "Coordination d’équipes pluridisciplinaires"]
