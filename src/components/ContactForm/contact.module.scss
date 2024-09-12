@@ -1,0 +1,27 @@
+.contactFormContainer {
+  @apply flex flex-col max-w-lg p-4 md:mx-auto;
+
+  div {
+    @apply flex flex-col mb-4;
+
+    label{
+      @apply text-xl font-light;
+    }
+    input, textarea{
+      @apply bg-inherit border-b-2 border-black;
+    }
+  }
+
+  .loadingSend{
+    @apply relative w-full h-2 bg-gray-200 rounded-full mb-4;
+
+    div{
+      @apply absolute top-0 left-0 h-full bg-secondary rounded-full;
+    }
+  }
+
+  button{
+    @apply self-center w-1/2 bg-black text-white py-2 px-4 rounded-md hover:bg-secondary focus:outline-none;
+  }
+
+}
