@@ -124,7 +124,7 @@ export default function ContactForm() {
       )}
       {status === 'error' && (
         <p className="mt-4 text-center text-sm text-red-500">
-          Une erreur est survenue lors de l'envoi du message.
+          Une erreur est survenue lors de l&#39;envoi du message.
         </p>
       )}
     </form>
