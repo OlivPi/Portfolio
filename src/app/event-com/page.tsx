@@ -5,7 +5,7 @@ import Experiences from "@/components/Experiences/Experiences";
 
 export default async function EventComPage() {
   const projects = await getProjects('Événement');
-  const exp = await getExperiences('Événement');
+  const experiences = await getExperiences('Événement');
 
   return (
     <section className={styles.container}>
@@ -15,7 +15,7 @@ export default async function EventComPage() {
       </div>
       <div className={styles.containerXp}>
         <h2>Expériences</h2>
-        <Experiences experiences={exp} />
+        <Experiences experiences={experiences} />
     </div>
 </section>
 )

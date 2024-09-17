@@ -6,7 +6,7 @@ import {projectSelect, ProjectSummary} from "@/lib/types/ProjectTypes";
 
 const prisma = new PrismaClient()
 
-export async function getExperiences(type: string): Promise<ExperienceSummary[]> {
+export async function getExperiences(type?: string): Promise<ExperienceSummary[]> {
   return prisma.experience.findMany({
     where: { type },
     select: experienceSelect
