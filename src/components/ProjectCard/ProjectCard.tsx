@@ -2,7 +2,6 @@ import { ProjectSummary } from '@/lib/types/ProjectTypes';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './projectCard.module.scss';
-import HotelOutal from '../../../public/projects/hotelouta-image.png';
 
 interface ProjectsProps{
   projects: ProjectSummary[];

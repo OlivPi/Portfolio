@@ -88,6 +88,7 @@
   "experiences": [
     {
       "id": 1,
+      "type": "Développement web",
       "role": "Développeur Front-End & Chef de Projet",
       "company": "Free-lance",
       "city": "Lyon",
@@ -103,6 +104,7 @@
     },
     {
       "id": 2,
+      "type": "Développement web",
       "role": "Développeur Front-End React",
       "company": "Norgay",
       "city": "Lyon",
@@ -117,6 +119,7 @@
     },
     {
       "id": 3,
+      "type": "Développement web",
       "role": "Développeur Front-End - Chargé de Développement",
       "company": "Agence Akumaw",
       "city": "Lyon",
@@ -131,6 +134,7 @@
     },
     {
       "id": 4,
+      "type": "Gestion de projets",
       "role": "Chargé de Développement",
       "company": "René Pierre Location",
       "city": "Lyon",
@@ -146,6 +150,7 @@
     },
     {
       "id": 5,
+      "type": "Événement",
       "role": "Coordinateur Général et Programmateur",
       "company": "Festival Les Musicaves",
       "city": "Givry (71)",
@@ -154,13 +159,14 @@
       "startDate": "2023-01",
       "endDate": "",
       "tasks": [
-        "Direction générale du festival",
+        "Coordination générale du festival",
         "Programmation et direction artistique",
         "coordination de la communication, la logistique et des équipes"
       ]
     },
     {
       "id": 6,
+      "type": "Événement",
       "role": "Chargé de Communication Web - Graphiste",
       "company": "Festival FESTBOUC ",
       "city": "Chassagny (69)",
@@ -175,6 +181,7 @@
     },
     {
       "id": 7,
+      "type": "Événement",
       "role": "Président Co-Fondateur",
       "company": "Paraplui",
       "city": "Lyon (69)",
@@ -191,6 +198,7 @@
     },
     {
       "id": 8,
+      "type": "Événement",
       "role": "Chargé de Communication et Programmation",
       "company": "DV1 Club",
       "city": "Lyon (69)",
@@ -206,6 +214,7 @@
     },
     {
       "id": 9,
+      "type": "Formation",
       "role": "Formateur, WordPress - Réseaux Sociaux - Webdesign - UI/UX - HTML/CSS",
       "company": "ESD, EFAP, ISEG, ESCEN, CCI",
       "city": "Lyon (69)",
