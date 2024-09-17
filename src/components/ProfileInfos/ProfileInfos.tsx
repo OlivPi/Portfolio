@@ -4,7 +4,8 @@ import styles from './profilinfo.module.scss'
 export const ProfileInfos = () => {
     return (
         <div className={styles.container}>
-            <p>Professionnel polyvalent, je combine une solide expertise en gestion de projets et en développement web, avec une expérience approfondie en programmation artistique. Fort de plusieurs années de pratique dans la conception et la mise en œuvre de solutions web innovantes, j’ai piloté des projets complexes de bout en bout, assurant la coordination d’équipes pluridisciplinaires et le respect des délais et des objectifs. Mon approche rigoureuse me permet de gérer efficacement les ressources et les budgets, tout en intégrant des outils de gestion modernes tels que Notion, AirTable, et Trello. En parallèle, ma sensibilité artistique me permet de concevoir et de programmer des projets culturels ambitieux, alliant créativité et impact social.</p>
+            <p className={'mb-2'}>Spécialisé en React et WordPress, je bénéficie d’une solide expérience dans la création et le déploiement de projets web complexes. Mon expertise en développement front-end s’accompagne d’une maîtrise de la gestion de projet, me permettant de piloter des initiatives de bout en bout. De la conception technique à la mise en œuvre opérationnelle, j’assure le bon déroulement des projets tout en garantissant des solutions performantes et adaptées aux besoins des clients.</p>
+            <p>En parallèle, mon savoir-faire en programmation artistique et événementielle me permet de concevoir et coordonner des projets culturels ambitieux. Que ce soit pour la gestion d’événements ou la direction artistique, j’allie créativité et rigueur pour offrir des expériences engageantes et enrichissantes, tout en répondant aux attentes des partenaires et du public.</p>
             <Image src={profilePic} alt="Photo Olivier Pierre" height={250} width={250} className={"my-4"}/>
         </div>
     )

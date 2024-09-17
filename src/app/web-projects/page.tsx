@@ -1,8 +1,10 @@
 import ProjectCard from '@/components/ProjectCard/ProjectCard'
-import { getProjects } from '@/lib/fetchData';
+import { getExperiences, getProjects } from "@/lib/fetchData";
 import styles from '@/app/ui/projects.module.scss'
+import Experiences from "@/components/Experiences/Experiences";
 export default async function WebProjectsPage() {
   const projects = await getProjects('Développement web');
+  const exp = await getExperiences('Développement web');
 
   return (
     <section className={styles.container}>
@@ -10,6 +12,10 @@ export default async function WebProjectsPage() {
       <div className={styles.containerProjects}>
         <ProjectCard projects={projects}/>
       </div>
-   </section>
+      <div className={styles.containerXp}>
+        <h2>Expériences</h2>
+        <Experiences experiences={exp} />
+      </div>
+    </section>
   )
 }

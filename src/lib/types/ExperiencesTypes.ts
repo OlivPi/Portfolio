@@ -5,6 +5,7 @@ export const experienceSelect = Prisma.validator<Prisma.ExperienceSelect>()({
   company: true,
   city: true,
   role: true,
+  type: true,
   tasks: true,
   logo: true,
   startDate: true,
