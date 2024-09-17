@@ -6,12 +6,12 @@ interface PersonalInformationProps {
 }
 export default function Header({personalInformation}: PersonalInformationProps) {
   return (
-    <header className="py-24">
+    <header className="pt-6 pb-24">
+      <div className={'flex justify-between pb-24'}>
         <SiteTitle/>
         <Menu />
-        <div>
+      </div>
             <h2 className={'text-xl'}>{personalInformation[0].title}</h2>
-        </div>
     </header>
   )
 }

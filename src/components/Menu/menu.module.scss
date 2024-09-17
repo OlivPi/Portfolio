@@ -1,0 +1,25 @@
+
+.burgerButton {
+  @apply relative flex flex-col justify-between w-10 h-8 z-30 md:hidden p-4 focus:outline-none;
+
+  .burgerLine {
+    @apply block w-6 h-1 p-0.5 my-0.5 bg-black transition-all duration-300;
+  }
+}
+
+
+
+.fullscreenMenu {
+  @apply fixed flex flex-col justify-center items-center top-0 right-0 w-full h-full bg-white p-8 transform transition-transform duration-500;
+  transform: translateX(100%);
+  transition: transform 0.5s ease;
+
+  @screen md{
+    @apply static flex-row justify-end items-center right-auto w-auto h-auto bg-transparent p-0 translate-x-0;
+  }
+
+  ul{
+    @apply space-y-8 md:space-y-0 md:flex md:flex-col  text-center md:text-left;
+
+  }
+}

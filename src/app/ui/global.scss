@@ -17,7 +17,7 @@
 }
 
 body {
-    @apply container bg-primary px-4 mx-auto my-10;
+    @apply container md:container lg:container bg-primary px-4 mx-auto my-6;
 }
 
 @layer utilities {
