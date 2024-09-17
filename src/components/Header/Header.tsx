@@ -11,7 +11,7 @@ export default function Header({personalInformation}: PersonalInformationProps) 
         <SiteTitle/>
         <Menu />
       </div>
-            <h2 className={'text-xl'}>{personalInformation[0].title}</h2>
+            <h2 className={'text-xl flex flex-col'}>{personalInformation[0].title}</h2>
     </header>
   )
 }
