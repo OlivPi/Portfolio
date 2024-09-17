@@ -1,5 +1,5 @@
 .container{
-  @apply flex justify-between items-end h-40;
+  @apply flex flex-col items-center justify-between md:flex-row md:items-end h-24 lg:h-40 mt-10;
   div{
     @apply flex space-x-2;
   }

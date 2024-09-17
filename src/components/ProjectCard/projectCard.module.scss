@@ -5,7 +5,7 @@
         @apply text-3xl py-1.5;
     }
   ul{
-    @apply flex;
+    @apply flex flex-wrap;
     li{
       @apply bg-secondary py-1 px-2 rounded mr-3 my-1.5;
     }

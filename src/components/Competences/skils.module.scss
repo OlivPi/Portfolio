@@ -1,15 +1,15 @@
 .container{
-  @apply flex flex-col m-4 gap-6 h-auto break-inside-avoid;
+  @apply flex flex-col m-4 h-auto break-inside-avoid;
 
   h4{
-    @apply text-2xl;
+    @apply text-xl;
   }
 
   ul{
     @apply flex flex-wrap;
 
     li{
-      @apply px-1;
+      @apply px-1 font-light;
     }
   }
 }

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import useCarousel from './useCarousel';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import styles from './carousel.module.scss';
@@ -9,25 +9,8 @@ interface CarouselProps {
 }
 
 const Carousel = ({ children }: CarouselProps) => {
-  const [visibleSlides, setVisibleSlides] = useState(3);
   const slideCount = React.Children.count(children);
-  const { carouselRef, nextSlide, prevSlide } = useCarousel(slideCount, visibleSlides);
-
-  useEffect(() => {
-    const updateVisibleSlides = () => {
-      if (carouselRef.current) {
-        const containerWidth = carouselRef.current.clientWidth;
-        const slideWidth = containerWidth / visibleSlides;
-        const slidesVisible = Math.floor(containerWidth / slideWidth);
-        setVisibleSlides(slidesVisible > 0 ? slidesVisible : 1);
-      }
-    };
-
-    updateVisibleSlides();
-    window.addEventListener('resize', updateVisibleSlides);
-
-    return () => window.removeEventListener('resize', updateVisibleSlides);
-  }, [carouselRef, visibleSlides]);
+  const { carouselRef, visibleSlides, nextSlide, prevSlide } = useCarousel(slideCount);
 
   return (
     <div className={styles.carouselContainer}>
