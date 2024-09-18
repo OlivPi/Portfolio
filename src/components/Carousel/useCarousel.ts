@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
+import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(Draggable);
 
@@ -9,6 +10,8 @@ const useCarousel = (slideCount: number) => {
   const tl = useRef<gsap.core.Timeline | null>(null);
   const currentIndex = useRef(0);
   const [visibleSlides, setVisibleSlides] = useState(3);
+
+  // const { contextSafe } = useGSAP();
 
   useEffect(() => {
     const updateVisibleSlides = () => {
@@ -30,30 +33,37 @@ const useCarousel = (slideCount: number) => {
     return () => window.removeEventListener('resize', updateVisibleSlides);
   }, []);
 
-  useEffect(() => {
-    if (carouselRef.current) {
-      const slides = gsap.utils.toArray(carouselRef.current.children) as HTMLElement[];
-      tl.current = gsap.timeline({ paused: true })
-        .to(slides, {
-          xPercent: -100 * (slideCount - visibleSlides),
-          ease: 'none',
-          duration: slideCount - visibleSlides,
-        });
+  useGSAP(() => {
+    if (!carouselRef.current) return;
 
-      Draggable.create(carouselRef.current, {
-        type: 'x',
-        bounds: carouselRef.current,
-        inertia: true,
-        onDrag: function () {
-          const progress = this.x / this.maxX;
-          tl.current?.progress(progress);
-        },
-        snap: {
-          x: (endValue) => Math.round(endValue / carouselRef.current!.clientWidth) * carouselRef.current!.clientWidth,
-        },
+    const slides = gsap.utils.toArray(carouselRef.current.children) as HTMLElement[];
+
+    tl.current = gsap.timeline({ paused: true })
+      .to(slides, {
+        xPercent: -100 * (slideCount - visibleSlides),
+        ease: 'none',
+        duration: slideCount - visibleSlides,
       });
-    }
-  }, [slideCount, visibleSlides]); // Re-run effect when visibleSlides changes
+
+    const draggableInstance = Draggable.create(carouselRef.current, {
+      type: 'x',
+      bounds: carouselRef.current,
+      inertia: true,
+      onDrag: function () {
+        const progress = this.x / this.maxX;
+        tl.current?.progress(progress);
+      },
+      snap: {
+        x: (endValue) =>
+          Math.round(endValue / carouselRef.current!.clientWidth) * carouselRef.current!.clientWidth,
+      },
+    });
+
+    return () => {
+      draggableInstance[0].kill();
+      tl.current?.kill();
+    };
+  }, [slideCount, visibleSlides]);
 
   const nextSlide = () => {
     if (currentIndex.current < slideCount - visibleSlides) {
@@ -61,9 +71,7 @@ const useCarousel = (slideCount: number) => {
     } else {
       currentIndex.current = 0;
     }
-    if (tl.current) {
-      tl.current.tweenTo(currentIndex.current, { duration: 0.5 });
-    }
+    tl.current?.tweenTo(currentIndex.current, { duration: 0.5 });
   };
 
   const prevSlide = () => {
@@ -72,9 +80,7 @@ const useCarousel = (slideCount: number) => {
     } else {
       currentIndex.current = slideCount - visibleSlides;
     }
-    if (tl.current) {
-      tl.current.tweenTo(currentIndex.current, { duration: 0.5 });
-    }
+    tl.current?.tweenTo(currentIndex.current, { duration: 0.5 });
   };
 
   return {

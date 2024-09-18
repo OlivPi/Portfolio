@@ -7,12 +7,8 @@
   }
 }
 
-
-
 .fullscreenMenu {
-  @apply fixed flex flex-col justify-center items-center top-0 right-0 w-full h-full bg-white p-8 transform transition-transform duration-500;
-  transform: translateX(100%);
-  transition: transform 0.5s ease;
+  @apply fixed flex flex-col justify-center items-center top-0 right-0 w-full h-full bg-white p-8 translate-x-full transform transition-transform duration-500;
 
   @screen md{
     @apply static flex-row justify-end items-center right-auto w-auto h-auto bg-transparent p-0 translate-x-0;
