@@ -11,8 +11,11 @@
         }
 
     }
-
     h2{
         @apply text-3xl font-medium mb-4;
+    }
+
+    .educationContainer{
+        @apply flex flex-col justify-around md:flex-row;
     }
 }

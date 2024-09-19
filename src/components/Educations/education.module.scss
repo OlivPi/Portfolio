@@ -1,0 +1,9 @@
+.container{
+  @apply flex flex-wrap;
+  div{
+    @apply m-4;
+    h4{
+      @apply text-xl;
+    }
+  }
+}

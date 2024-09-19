@@ -1,13 +1,15 @@
 import Experience from '@/components/Experiences/Experiences';
 import Skill from '@/components/Competences/Competences';
 import {ProfileInfos} from "@/components/ProfileInfos/ProfileInfos";
-import {getExperiences, getSkills} from '@/lib/fetchData';
+import { getEducations, getExperiences, getSkills } from "@/lib/fetchData";
 import { SkillsSummary } from '@/lib/types/SkillsTypes';
 import styles from './ui/home.module.scss';
+import Education from "@/components/Educations/Educations";
 
 export default async function HomePage () {
     const experiences = await getExperiences();
     const skills = await getSkills();
+    const educations = await getEducations();
 
   const skillCategories = {
     Web: ['frontEnd', 'backEnd', 'databases', 'workflow', 'api'],
@@ -36,6 +38,10 @@ export default async function HomePage () {
       <section>
         <h2>EXPÉRIENCES</h2>
         <Experience experiences={experiences} />
+      </section>
+      <section className={styles.educationContainer}>
+        <h2>FORMATIONS</h2>
+        <Education educations={educations} />
       </section>
     </main>
   )

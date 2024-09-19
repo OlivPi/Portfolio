@@ -3,6 +3,7 @@ import { ExperienceSummary, experienceSelect } from '@/lib/types/ExperiencesType
 import {skillsSelect, SkillsSummary} from "@/lib/types/SkillsTypes";
 import {personalInformationSelect, PersonalInformationSummary} from "@/lib/types/PersonalInformation";
 import {projectSelect, ProjectSummary} from "@/lib/types/ProjectTypes";
+import { educationSelect, EducationSummary } from "@/lib/types/EducationsTypes";
 
 const prisma = new PrismaClient()
 
@@ -30,4 +31,10 @@ export async function getProjects(type: string): Promise<ProjectSummary[]> {
          where: { type },
         select: projectSelect
       })
+}
+
+export async function getEducations(): Promise<EducationSummary[]> {
+  return prisma.education.findMany({
+    select: educationSelect
+  })
 }
