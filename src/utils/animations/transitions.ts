@@ -1,6 +1,5 @@
 import gsap from 'gsap';
 
-// Fonction pour créer un fond coloré
 const createBackground = (color: string) => {
   const bg = document.createElement('div');
   bg.style.position = 'fixed';
@@ -19,7 +18,6 @@ const createBackground = (color: string) => {
   };
 };
 
-// Animation d'entrée
 export const pageTransitionEnter = (node: HTMLElement, color: string, toggleCompleted: (completed: boolean) => void) => {
   const { bg, remove } = createBackground(color);
 
@@ -33,12 +31,11 @@ export const pageTransitionEnter = (node: HTMLElement, color: string, toggleComp
     },
   })
     .to(bg, { opacity: 1, duration: 0.5, ease: 'steps(12)' })
-    .to(node, { autoAlpha: 1, scale: 1, xPercent: 0, duration: 0.8, ease: 'steps(12)' }, "-=0.4")
+    .to(node, { autoAlpha: 1, scale: 1, xPercent: 0, duration: 0.2, ease: 'steps(12)' }, "-=0.4")
     .to(bg, { opacity: 0, duration: 1, ease: 'steps(12)' }, "-=0.2")
     .play();
 };
 
-// Animation de sortie
 export const pageTransitionExit = (node: HTMLElement, color: string) => {
   const { bg, remove } = createBackground(color);
 
@@ -51,7 +48,7 @@ export const pageTransitionExit = (node: HTMLElement, color: string) => {
     },
   })
     .to(bg, { opacity: 1, duration: 0.2, ease: 'steps(12)' })
-    .to(node, { scale: 0.5, xPercent: 100, autoAlpha: 0, duration: 0.8, ease: 'steps(12)' }, "-=0.4")
+    .to(node, { scale: 0.5, xPercent: 100, autoAlpha: 0, duration: 0.2, ease: 'steps(12)' }, "-=0.4")
     .to(bg, { opacity: 1, duration: 1, ease: 'steps(12)' }, "-=0.2")
     .play();
 };
