@@ -9,6 +9,7 @@ import styles from './menu.module.scss'
 import { openMenuAnimation, closeMenuAnimation } from '@/utils/animations/menuMobile';
 
 const links = [
+  { href: '/', name: 'Home' },
   { href: '/web-projects', name: 'Projets Web' },
   { href: '/event-com', name: "Évenementiel et communication" },
   { href: '/contact', name: 'Contact' },

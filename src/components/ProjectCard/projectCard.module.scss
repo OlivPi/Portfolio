@@ -1,7 +1,7 @@
 .card{
-    @apply flex flex-col;
-      @apply p-3;
-      h3{
+    @apply flex h-auto p-3;
+
+  h3{
         @apply text-xl py-1.5;
     }
   ul{

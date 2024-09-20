@@ -35,7 +35,7 @@ export default async function HomePage () {
           <Skill title="Projet" skill={categorizedSkills.Projet} />
         </div>
       </section>
-      <section>
+      <section className={styles.experienceContainer}>
         <h2>EXPÉRIENCES</h2>
         <Experience experiences={experiences} />
       </section>
