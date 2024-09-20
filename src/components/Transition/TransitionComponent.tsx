@@ -19,7 +19,7 @@ const TransitionComponent = ({ children }: TransitionProviderProps) => {
       <Transition
         key={pathname}
         nodeRef={nodeRef}
-        timeout={800}
+        timeout={1000}
         mountOnEnter
         unmountOnExit
         onEnter={() => {
