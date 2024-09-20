@@ -1,7 +1,13 @@
+import type { Metadata } from 'next'
 import { getProjects, getExperiences } from "@/lib/fetchData";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import styles from "@/app/ui/projects.module.scss";
 import Experiences from "@/components/Experiences/Experiences";
+
+export const metadata: Metadata = {
+  title: 'Projets événementiel et communication',
+}
+
 
 export default async function EventComPage() {
   const projects = await getProjects('Événement');

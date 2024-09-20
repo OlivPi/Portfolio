@@ -319,10 +319,9 @@
       "name": "Festival Festbouc",
       "image": "festbouc-image.png",
       "description": "Festival Solidaire et Responsable.",
-      "structure": "Paraplui",
+      "structure": "WHO'S IN",
       "link": "https://2018.nuits-sonores.com/les-programmes/extra-la-mondialette/",
-      "skills": ["Programmation artistique et culturelle","Conception de supports visuels",
-        "Gestion et administration de bars"]
+      "skills": ["Conception de supports visuels", "Gestion et administration de bars"]
     },
     {
       "type": "Événement",

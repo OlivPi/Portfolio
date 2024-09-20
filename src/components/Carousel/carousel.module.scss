@@ -1,5 +1,5 @@
 .carouselContainer {
-  @apply relative w-full overflow-hidden h-[330px] lg:h-[300px];
+  @apply relative w-full overflow-hidden h-auto;
 
 }
 
@@ -9,7 +9,7 @@
 }
 
 .carouselSlide {
-  @apply flex-shrink-0 box-border h-auto;
+  @apply flex-shrink-0 box-border lg:w-1/3 h-auto px-5 pb-10;
 }
 
 .navigationButtons {

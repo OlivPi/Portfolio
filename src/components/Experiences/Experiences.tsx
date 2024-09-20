@@ -8,12 +8,12 @@ interface ExperiencesProps {
     experiences: ExperienceSummary[];
 }
 export default function Experiences({ experiences }: ExperiencesProps) {
-
+  const orderedExperiences = [...experiences].sort((a,b) => a.id - b.id)
     return (
       <div className={styles.container}>
         <Carousel>
           {
-            experiences.map((exp, key) => (
+            orderedExperiences.map((exp, key) => (
               <div key={exp.id}>
                 <div>
                   <h4>{exp.role}</h4>
