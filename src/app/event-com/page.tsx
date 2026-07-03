@@ -6,6 +6,15 @@ import Experiences from '@/components/Experiences/Experiences'
 
 export const metadata: Metadata = {
   title: 'Projets événementiel et communication',
+  description:
+    "Projets événementiels et culturels d'Olivier Pierre : festivals, programmation artistique et communication pour des expériences engageantes.",
+  alternates: { canonical: '/event-com' },
+  openGraph: {
+    url: 'https://opierre.fr/event-com',
+    title: 'Olivier Pierre | Événementiel & Communication',
+    description:
+      'Festivals, programmation artistique et projets culturels coordonnés par Olivier Pierre.',
+  },
 }
 
 export default async function EventComPage() {

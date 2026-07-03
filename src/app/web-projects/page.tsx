@@ -6,6 +6,15 @@ import Experiences from '@/components/Experiences/Experiences'
 
 export const metadata: Metadata = {
   title: 'Projets Web',
+  description:
+    "Découvrez les projets web d'Olivier Pierre : applications React, sites WordPress, intégrations API et expériences utilisateur sur-mesure.",
+  alternates: { canonical: '/web-projects' },
+  openGraph: {
+    url: 'https://opierre.fr/web-projects',
+    title: 'Olivier Pierre | Projets Web',
+    description:
+      'Applications React, sites WordPress et intégrations API réalisés par Olivier Pierre.',
+  },
 }
 
 export default async function WebProjectsPage() {

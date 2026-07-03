@@ -27,8 +27,20 @@ const Carousel = ({ children }: CarouselProps) => {
         ))}
       </div>
       <div className={styles.navigationButtons}>
-        <SlArrowLeft className={styles.arrowButton} onClick={prevSlide} />
-        <SlArrowRight className={styles.arrowButton} onClick={nextSlide} />
+        <button
+          className={styles.arrowButton}
+          onClick={prevSlide}
+          aria-label="Slide précédente"
+        >
+          <SlArrowLeft aria-hidden="true" />
+        </button>
+        <button
+          className={styles.arrowButton}
+          onClick={nextSlide}
+          aria-label="Slide suivante"
+        >
+          <SlArrowRight aria-hidden="true" />
+        </button>
       </div>
     </div>
   )

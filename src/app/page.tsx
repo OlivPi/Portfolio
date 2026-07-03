@@ -26,7 +26,7 @@ export default async function HomePage() {
   }
 
   return (
-    <main className={styles.containerHome}>
+    <div className={styles.containerHome}>
       <ProfileInfos />
       <section className={styles.skillsSection}>
         <h2>COMPÉTENCES</h2>
@@ -47,6 +47,6 @@ export default async function HomePage() {
         <h2>FORMATIONS</h2>
         <Education educations={educations} />
       </section>
-    </main>
+    </div>
   )
 }

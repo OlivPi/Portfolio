@@ -25,7 +25,7 @@ export const pageTransitionEnter = (
 ) => {
   const { bg, remove } = createBackground(color)
 
-  gsap.set(node, { duration: 0.5, autoAlpha: 0, scale: 0.5, xPercent: -100 })
+  gsap.set(node, { autoAlpha: 0, scale: 0.96, xPercent: -3 })
 
   return gsap
     .timeline({
@@ -35,20 +35,26 @@ export const pageTransitionEnter = (
         remove()
       },
     })
-    .to(bg, { opacity: 1, duration: 0.5, ease: 'steps(12)' })
+    .to(bg, { opacity: 1, duration: 0.3, ease: 'power2.in' })
     .to(
       node,
-      { autoAlpha: 1, scale: 1, xPercent: 0, duration: 1, ease: 'steps(12)' },
-      '-=0.4'
+      {
+        autoAlpha: 1,
+        scale: 1,
+        xPercent: 0,
+        duration: 0.6,
+        ease: 'power3.out',
+      },
+      '-=0.1'
     )
-    .to(bg, { opacity: 0, duration: 1, ease: 'steps(12)' }, '-=0.2')
+    .to(bg, { opacity: 0, duration: 0.4, ease: 'power2.out' }, '-=0.3')
     .play()
 }
 
 export const pageTransitionExit = (node: HTMLElement, color: string) => {
   const { bg, remove } = createBackground(color)
 
-  gsap.set(node, { duration: 0.5, autoAlpha: 0 })
+  gsap.set(node, { autoAlpha: 1 })
 
   return gsap
     .timeline({
@@ -57,18 +63,17 @@ export const pageTransitionExit = (node: HTMLElement, color: string) => {
         remove()
       },
     })
-    .to(bg, { opacity: 1, duration: 0.2, ease: 'steps(12)' })
+    .to(bg, { opacity: 1, duration: 0.25, ease: 'power2.in' })
     .to(
       node,
       {
-        scale: 0.5,
-        xPercent: 100,
+        scale: 0.97,
+        xPercent: 2,
         autoAlpha: 0,
-        duration: 1,
-        ease: 'steps(12)',
+        duration: 0.4,
+        ease: 'power2.in',
       },
-      '-=0.4'
+      '-=0.15'
     )
-    .to(bg, { opacity: 1, duration: 1, ease: 'steps(12)' }, '-=0.2')
     .play()
 }

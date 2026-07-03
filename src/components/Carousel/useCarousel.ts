@@ -11,12 +11,9 @@ const useCarousel = (slideCount: number) => {
   const currentIndex = useRef(0)
   const [visibleSlides, setVisibleSlides] = useState(3)
 
-  // const { contextSafe } = useGSAP();
-
   useEffect(() => {
     const updateVisibleSlides = () => {
       const screenWidth = window.innerWidth
-
       if (screenWidth <= 640) {
         setVisibleSlides(1)
       } else if (screenWidth <= 1024) {
@@ -27,10 +24,18 @@ const useCarousel = (slideCount: number) => {
     }
 
     updateVisibleSlides()
-    window.addEventListener('resize', updateVisibleSlides)
 
-    // Cleanup listener on component unmount
-    return () => window.removeEventListener('resize', updateVisibleSlides)
+    let debounceTimer: ReturnType<typeof setTimeout>
+    const handleResize = () => {
+      clearTimeout(debounceTimer)
+      debounceTimer = setTimeout(updateVisibleSlides, 150)
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      clearTimeout(debounceTimer)
+    }
   }, [])
 
   useGSAP(() => {

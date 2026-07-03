@@ -57,12 +57,23 @@ export default function Menu() {
 
   return (
     <>
-      <button className={styles.burgerButton} onClick={toggleMenu}>
+      <button
+        className={styles.burgerButton}
+        onClick={toggleMenu}
+        aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+        aria-expanded={isOpen}
+        aria-controls="main-navigation"
+      >
         <div ref={burgerTopRef} className={styles.burgerLine}></div>
         <div ref={burgerMiddleRef} className={styles.burgerLine}></div>
         <div ref={burgerBottomRef} className={styles.burgerLine}></div>
       </button>
-      <nav ref={menuRef} className={styles.fullscreenMenu}>
+      <nav
+        id="main-navigation"
+        ref={menuRef}
+        className={styles.fullscreenMenu}
+        aria-label="Navigation principale"
+      >
         <ul>
           {links.map((link) => (
             <li key={link.name} className={'md:ml-0 cursor-pointer'}>

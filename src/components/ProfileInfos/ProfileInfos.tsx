@@ -27,6 +27,7 @@ export const ProfileInfos = () => {
         height={250}
         width={250}
         className={'my-4'}
+        priority
       />
     </div>
   )
