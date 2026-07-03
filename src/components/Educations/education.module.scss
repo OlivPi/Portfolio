@@ -1,8 +1,8 @@
-.container {
+.container{
   @apply flex flex-wrap;
-  div {
+  div{
     @apply m-4;
-    h4 {
+    h4{
       @apply text-xl;
     }
   }

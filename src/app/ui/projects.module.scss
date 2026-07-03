@@ -1,17 +1,17 @@
-.container {
-  h1 {
+.container{
+  h1{
     @apply text-3xl font-bold mb-8;
   }
-  .containerProjects {
+  .containerProjects{
     @apply grid grid-cols-1 md:grid-cols-2 auto-cols-min gap-8;
   }
 
-  .containerXp {
+  .containerXp{
     @apply my-14;
-    h2 {
+    h2{
       @apply text-2xl font-medium mb-4;
     }
-    div {
+    div{
       @apply mt-0;
     }
   }

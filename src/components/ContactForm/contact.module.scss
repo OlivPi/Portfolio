@@ -4,24 +4,24 @@
   div {
     @apply flex flex-col mb-4;
 
-    label {
+    label{
       @apply text-xl font-light;
     }
-    input,
-    textarea {
-      @apply bg-inherit border-b-2 border-foreground outline-none focus:border-secondary transition-colors;
+    input, textarea{
+      @apply bg-inherit border-b-2 border-black;
     }
   }
 
-  .loadingSend {
-    @apply relative w-full h-2 bg-tertiary rounded-full mb-4;
+  .loadingSend{
+    @apply relative w-full h-2 bg-gray-200 rounded-full mb-4;
 
-    div {
+    div{
       @apply absolute top-0 left-0 h-full bg-secondary rounded-full;
     }
   }
 
-  button {
-    @apply self-center w-1/2 bg-foreground text-primary py-2 px-4 rounded-md hover:bg-secondary hover:text-foreground focus:outline-none transition-colors duration-200;
+  button{
+    @apply self-center w-1/2 bg-black text-white py-2 px-4 rounded-md hover:bg-secondary focus:outline-none;
   }
+
 }

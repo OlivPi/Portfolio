@@ -1,62 +1,29 @@
-.containerHome {
-  @screen md {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    grid-template-areas:
-      'profile skills'
-      'experiences experiences'
-      'education education';
-    gap: 0 3rem;
-    align-items: start;
-  }
+.containerHome{
+    .skillsSection{
+        @apply flex flex-col md:items-end py-8 sm:p-0 sm:-translate-y-28;
 
-  h2 {
-    @apply text-3xl font-medium mb-4;
-  }
-}
+        h3{
+            @apply self-center text-2xl font-medium mt-6;
+        }
+        .skillsContainer{
+            @apply w-full md:w-3/5 columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 md:my-6;
 
-.profileSection {
-  grid-area: profile;
-}
+        }
 
-.skillsSection {
-  grid-area: skills;
-  @apply flex flex-col py-8 md:py-0;
-
-  h3 {
-    @apply self-start text-2xl font-medium mt-6;
-  }
-
-  .skillsContainer {
-    @apply w-full columns-1 sm:columns-2 gap-6 space-y-6 my-6;
-  }
-}
-
-.experienceContainer {
-  grid-area: experiences;
-  @apply mb-16;
-}
-
-.educationContainer {
-  grid-area: education;
-  @apply flex flex-col justify-around md:flex-row flex-wrap mb-16;
-
-  h2 {
-    @apply w-full h-auto;
-  }
-}
-
-.cta {
-  @apply flex flex-wrap gap-4 mt-8 mb-2;
-
-  a {
-    @apply px-6 py-3 font-medium text-sm transition-all duration-200 rounded;
-
-    &:first-child {
-      @apply bg-foreground text-primary hover:bg-secondary hover:text-foreground;
     }
-    &:last-child {
-      @apply border border-foreground text-foreground hover:bg-foreground hover:text-primary;
+    h2{
+        @apply text-3xl font-medium mb-4;
     }
-  }
+
+    .experienceContainer{
+        @apply mb-16;
+    }
+
+    .educationContainer{
+        @apply flex flex-col justify-around md:flex-row flex-wrap mb-16;
+
+        h2{
+            @apply w-full h-auto;
+        }
+    }
 }

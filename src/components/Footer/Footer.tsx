@@ -10,17 +10,15 @@ export default function Footer() {
           href="https://www.linkedin.com/in/olivierpierre"
           target={'_blank'}
           rel={'noopener noreferrer'}
-          aria-label="LinkedIn d'Olivier Pierre"
         >
-          <FaLinkedin size={35} aria-hidden="true" />
+          <FaLinkedin size={35} />
         </Link>
         <Link
           href="https://github.com/OlivPi"
           target={'_blank'}
           rel={'noopener noreferrer'}
-          aria-label="GitHub d'Olivier Pierre"
         >
-          <FaGithub size={35} aria-hidden="true" />
+          <FaGithub size={35} />
         </Link>
       </div>
       <p>
