@@ -1,9 +1,11 @@
-import { Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/client'
 
 export const skillsSelect = Prisma.validator<Prisma.SkillSelect>()({
   id: true,
   type: true,
   name: true,
-  icon: true
+  icon: true,
 })
-export type SkillsSummary = Prisma.SkillGetPayload<{ select: typeof skillsSelect}>
+export type SkillsSummary = Prisma.SkillGetPayload<{
+  select: typeof skillsSelect
+}>

@@ -1,22 +1,22 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 import ProjectCard from '@/components/ProjectCard/ProjectCard'
-import { getExperiences, getProjects } from "@/lib/fetchData";
+import { getExperiences, getProjects } from '@/lib/fetchData'
 import styles from '@/app/ui/projects.module.scss'
-import Experiences from "@/components/Experiences/Experiences";
+import Experiences from '@/components/Experiences/Experiences'
 
 export const metadata: Metadata = {
   title: 'Projets Web',
 }
 
 export default async function WebProjectsPage() {
-  const projects = await getProjects('Développement web');
-  const exp = await getExperiences('Développement web');
+  const projects = await getProjects('Développement web')
+  const exp = await getExperiences('Développement web')
 
   return (
     <section className={styles.container}>
       <h1>Projets Web</h1>
       <div className={styles.containerProjects}>
-        <ProjectCard projects={projects}/>
+        <ProjectCard projects={projects} />
       </div>
       <div className={styles.containerXp}>
         <h2>Expériences</h2>

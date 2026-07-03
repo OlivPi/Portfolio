@@ -1,25 +1,29 @@
-import Experience from '@/components/Experiences/Experiences';
-import Skill from '@/components/Competences/Competences';
-import {ProfileInfos} from "@/components/ProfileInfos/ProfileInfos";
-import { getEducations, getExperiences, getSkills } from "@/lib/fetchData";
-import { SkillsSummary } from '@/lib/types/SkillsTypes';
-import styles from './ui/home.module.scss';
-import Education from "@/components/Educations/Educations";
+import Experience from '@/components/Experiences/Experiences'
+import Skill from '@/components/Competences/Competences'
+import { ProfileInfos } from '@/components/ProfileInfos/ProfileInfos'
+import { getEducations, getExperiences, getSkills } from '@/lib/fetchData'
+import { SkillsSummary } from '@/lib/types/SkillsTypes'
+import styles from './ui/home.module.scss'
+import Education from '@/components/Educations/Educations'
 
-export default async function HomePage () {
-    const experiences = await getExperiences();
-    const skills = await getSkills();
-    const educations = await getEducations();
+export default async function HomePage() {
+  const experiences = await getExperiences()
+  const skills = await getSkills()
+  const educations = await getEducations()
 
   const skillCategories = {
     Web: ['frontEnd', 'backEnd', 'databases', 'workflow', 'api'],
-    Projet: ['projectManage', 'event', 'tools', 'communication', ],
-  };
+    Projet: ['projectManage', 'event', 'tools', 'communication'],
+  }
 
   const categorizedSkills = {
-    Web: skills.filter((s: SkillsSummary) => skillCategories.Web.includes(s.type)),
-    Projet: skills.filter((s: SkillsSummary) => skillCategories.Projet.includes(s.type)),
-  };
+    Web: skills.filter((s: SkillsSummary) =>
+      skillCategories.Web.includes(s.type)
+    ),
+    Projet: skills.filter((s: SkillsSummary) =>
+      skillCategories.Projet.includes(s.type)
+    ),
+  }
 
   return (
     <main className={styles.containerHome}>

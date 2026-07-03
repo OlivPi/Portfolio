@@ -1,4 +1,4 @@
-import { Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/client'
 
 export const educationSelect = Prisma.validator<Prisma.EducationSelect>()({
   id: true,
@@ -8,6 +8,8 @@ export const educationSelect = Prisma.validator<Prisma.EducationSelect>()({
   dates: true,
   createdAt: true,
   updatedAt: true,
-});
+})
 
-export type EducationSummary = Prisma.EducationGetPayload<{select: typeof educationSelect;}>;
+export type EducationSummary = Prisma.EducationGetPayload<{
+  select: typeof educationSelect
+}>

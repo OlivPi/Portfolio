@@ -1,17 +1,16 @@
 import type { Metadata } from 'next'
-import { getProjects, getExperiences } from "@/lib/fetchData";
-import ProjectCard from "@/components/ProjectCard/ProjectCard";
-import styles from "@/app/ui/projects.module.scss";
-import Experiences from "@/components/Experiences/Experiences";
+import { getProjects, getExperiences } from '@/lib/fetchData'
+import ProjectCard from '@/components/ProjectCard/ProjectCard'
+import styles from '@/app/ui/projects.module.scss'
+import Experiences from '@/components/Experiences/Experiences'
 
 export const metadata: Metadata = {
   title: 'Projets événementiel et communication',
 }
 
-
 export default async function EventComPage() {
-  const projects = await getProjects('Événement');
-  const experiences = await getExperiences('Événement');
+  const projects = await getProjects('Événement')
+  const experiences = await getExperiences('Événement')
 
   return (
     <section className={styles.container}>
@@ -22,7 +21,7 @@ export default async function EventComPage() {
       <div className={styles.containerXp}>
         <h2>Expériences</h2>
         <Experiences experiences={experiences} />
-    </div>
-</section>
-)
+      </div>
+    </section>
+  )
 }

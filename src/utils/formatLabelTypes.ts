@@ -5,7 +5,7 @@
 const customMapping: Record<string, string> = {
   PROJECTMANAGE: 'Management de projet',
   EVENT: 'Événementiel',
-};
+}
 
 /**
  * Formats a skill type into a more user-friendly readable format.
@@ -16,14 +16,13 @@ const customMapping: Record<string, string> = {
  */
 
 export function formatType(type: string): string {
-
   if (customMapping[type.toUpperCase()]) {
-    return customMapping[type.toUpperCase()];
+    return customMapping[type.toUpperCase()]
   }
 
   return type
     .toLowerCase()
     .split('_')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
 }

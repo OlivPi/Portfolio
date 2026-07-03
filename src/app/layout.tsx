@@ -1,18 +1,18 @@
 import type { Metadata } from 'next'
-import { Suspense } from "react";
-import {getPersonalInformations} from "@/lib/fetchData";
+import { Suspense } from 'react'
+import { getPersonalInformations } from '@/lib/fetchData'
 import '@/app/ui/global.scss'
-import {ibm_plex, roboto_mono} from "@/app/ui/fonts";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import {TransitionProvider} from "@/Context/TransitionContext";
+import { ibm_plex, roboto_mono } from '@/app/ui/fonts'
+import Header from '@/components/Header/Header'
+import Footer from '@/components/Footer/Footer'
+import { TransitionProvider } from '@/Context/TransitionContext'
 import TransitionComponent from '@/components/Transition/TransitionComponent'
-import Loading from "@/app/loading";
+import Loading from '@/app/loading'
 
 export const metadata: Metadata = {
   title: {
     template: 'Olivier Pierre | %s',
-    default: 'Olivier Pierre | Portfolio'
+    default: 'Olivier Pierre | Portfolio',
   },
   description: 'Chef de projet et développeur front-end',
   metadataBase: new URL('https://opierre.fr'),
@@ -37,7 +37,7 @@ export default async function RootLayout({
         <body>
           <Header personalInformation={personalInformation} />
           <TransitionComponent>
-            <Suspense fallback={<Loading/>}>
+            <Suspense fallback={<Loading />}>
               <main>{children}</main>
             </Suspense>
           </TransitionComponent>
