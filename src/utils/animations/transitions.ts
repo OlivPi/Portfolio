@@ -14,10 +14,30 @@ const createBackground = (color: string) => {
 
   return {
     bg,
-    remove: () => document.body.removeChild(bg),
+    remove: () => {
+      if (document.body.contains(bg)) document.body.removeChild(bg)
+    },
   }
 }
 
+// Exit: page disappears instantly behind an overlay that fades in.
+// Timeline duration = 1s to match SwitchTransition timeout.
+export const pageTransitionExit = (node: HTMLElement, color: string) => {
+  const { bg, remove } = createBackground(color)
+
+  gsap.set(node, { autoAlpha: 0 })
+
+  return gsap
+    .timeline({
+      paused: true,
+      onComplete: remove,
+    })
+    .to(bg, { opacity: 1, duration: 0.5, ease: 'power2.inOut' })
+    .to({}, { duration: 0.5 }) // hold overlay until SwitchTransition swaps components
+    .play()
+}
+
+// Enter: overlay starts fully opaque, fades out to reveal the new page.
 export const pageTransitionEnter = (
   node: HTMLElement,
   color: string,
@@ -25,7 +45,8 @@ export const pageTransitionEnter = (
 ) => {
   const { bg, remove } = createBackground(color)
 
-  gsap.set(node, { autoAlpha: 0, scale: 0.96, xPercent: -3 })
+  gsap.set(node, { autoAlpha: 1 })
+  gsap.set(bg, { opacity: 1 })
 
   return gsap
     .timeline({
@@ -35,45 +56,6 @@ export const pageTransitionEnter = (
         remove()
       },
     })
-    .to(bg, { opacity: 1, duration: 0.3, ease: 'power2.in' })
-    .to(
-      node,
-      {
-        autoAlpha: 1,
-        scale: 1,
-        xPercent: 0,
-        duration: 0.6,
-        ease: 'power3.out',
-      },
-      '-=0.1'
-    )
-    .to(bg, { opacity: 0, duration: 0.4, ease: 'power2.out' }, '-=0.3')
-    .play()
-}
-
-export const pageTransitionExit = (node: HTMLElement, color: string) => {
-  const { bg, remove } = createBackground(color)
-
-  gsap.set(node, { autoAlpha: 1 })
-
-  return gsap
-    .timeline({
-      paused: true,
-      onComplete: () => {
-        remove()
-      },
-    })
-    .to(bg, { opacity: 1, duration: 0.25, ease: 'power2.in' })
-    .to(
-      node,
-      {
-        scale: 0.97,
-        xPercent: 2,
-        autoAlpha: 0,
-        duration: 0.4,
-        ease: 'power2.in',
-      },
-      '-=0.15'
-    )
+    .to(bg, { opacity: 0, duration: 0.7, ease: 'power2.out' })
     .play()
 }
