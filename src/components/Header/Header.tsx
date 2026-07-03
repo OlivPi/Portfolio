@@ -14,7 +14,7 @@ export default function Header({
         <Menu />
       </div>
       <h2 className={'text-xl flex flex-col'}>
-        {personalInformation[0].title}
+        {personalInformation[0]?.title}
       </h2>
     </header>
   )

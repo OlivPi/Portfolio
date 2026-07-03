@@ -7,10 +7,8 @@ export default function NotFoundPage() {
       <p className="text-lg mb-8">
         Désolé, la page que vous cherchez n&apos;existe pas.
       </p>
-      <Link href="/">
-        <a className="text-blue-500 hover:underline">
-          Retourner aux projets web
-        </a>
+      <Link href="/" className="text-blue-500 hover:underline">
+        Retourner à l&apos;accueil
       </Link>
     </section>
   )

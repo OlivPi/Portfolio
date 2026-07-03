@@ -52,7 +52,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const personalInformation = await getPersonalInformations()
+  let personalInformation: Awaited<ReturnType<typeof getPersonalInformations>> =
+    []
+  try {
+    personalInformation = await getPersonalInformations()
+  } catch {
+    // DB unavailable during static prerendering (build time) — graceful fallback
+  }
   return (
     <TransitionProvider>
       <html
