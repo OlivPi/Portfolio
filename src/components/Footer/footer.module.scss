@@ -1,7 +1,6 @@
-.container{
+.container {
   @apply flex flex-col items-center justify-between md:flex-row md:items-end h-24 lg:h-40 mt-10;
-  div{
+  div {
     @apply flex space-x-2;
   }
-
 }

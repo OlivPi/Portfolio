@@ -5,6 +5,8 @@ import { getEducations, getExperiences, getSkills } from '@/lib/fetchData'
 import { SkillsSummary } from '@/lib/types/SkillsTypes'
 import styles from './ui/home.module.scss'
 import Education from '@/components/Educations/Educations'
+import AnimatedSection from '@/components/AnimatedSection/AnimatedSection'
+import Link from 'next/link'
 
 export default async function HomePage() {
   const experiences = await getExperiences()
@@ -27,8 +29,15 @@ export default async function HomePage() {
 
   return (
     <div className={styles.containerHome}>
-      <ProfileInfos />
-      <section className={styles.skillsSection}>
+      <AnimatedSection className={styles.profileSection}>
+        <ProfileInfos />
+        <div className={styles.cta}>
+          <Link href="/contact">Me contacter</Link>
+          <Link href="/web-projects">Voir mes projets</Link>
+        </div>
+      </AnimatedSection>
+
+      <AnimatedSection className={styles.skillsSection} delay={0.1}>
         <h2>COMPÉTENCES</h2>
         <h3>WEB</h3>
         <div className={styles.skillsContainer}>
@@ -38,15 +47,17 @@ export default async function HomePage() {
         <div className={styles.skillsContainer}>
           <Skill title="Projet" skill={categorizedSkills.Projet} />
         </div>
-      </section>
-      <section className={styles.experienceContainer}>
+      </AnimatedSection>
+
+      <AnimatedSection className={styles.experienceContainer}>
         <h2>EXPÉRIENCES</h2>
         <Experience experiences={experiences} />
-      </section>
-      <section className={styles.educationContainer}>
+      </AnimatedSection>
+
+      <AnimatedSection className={styles.educationContainer}>
         <h2>FORMATIONS</h2>
         <Education educations={educations} />
-      </section>
+      </AnimatedSection>
     </div>
   )
 }

@@ -1,17 +1,24 @@
-.card{
-    @apply flex h-auto p-3;
+.card {
+  @apply flex h-auto p-3 rounded transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
 
-  h3{
-        @apply text-xl py-1.5;
-    }
-  ul{
+  a {
+    @apply block w-full;
+  }
+
+  h3 {
+    @apply text-xl py-1.5;
+  }
+
+  ul {
     @apply flex flex-wrap;
-    li{
-      @apply bg-secondary py-1 px-2 rounded mr-3 my-1.5;
+    li {
+      @apply bg-secondary py-1 px-2 rounded mr-2 my-1 text-sm text-foreground;
     }
   }
-  h4{
-    span{
+
+  h4 {
+    @apply mt-2 text-sm font-light;
+    span {
       @apply font-bold;
     }
   }
