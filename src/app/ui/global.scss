@@ -3,25 +3,31 @@
 @tailwind utilities;
 
 :root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
+  --color-primary: #f9efe6;
+  --color-secondary: #5cd19a;
+  --color-tertiary: #f7f7f7;
+  --color-quaternary: #ab9f0e;
+  --color-foreground: #0a0a0a;
+  --color-surface: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 0, 0, 0;
-        --background-end-rgb: 0, 0, 0;
-    }
+  :root {
+    --color-primary: #141414;
+    --color-secondary: #5cd19a;
+    --color-tertiary: #222222;
+    --color-quaternary: #c4b810;
+    --color-foreground: #f0ebe4;
+    --color-surface: #1e1e1e;
+  }
 }
 
 body {
-    @apply container md:container lg:container bg-primary px-4 mx-auto my-6;
+  @apply container md:container lg:container bg-primary text-foreground px-4 mx-auto my-6;
 }
 
 @layer utilities {
-    .text-balance {
-        text-wrap: avoid;
-    }
+  .text-balance {
+    text-wrap: balance;
+  }
 }

@@ -10,6 +10,7 @@ const useCarousel = (slideCount: number) => {
   const tl = useRef<gsap.core.Timeline | null>(null)
   const currentIndex = useRef(0)
   const [visibleSlides, setVisibleSlides] = useState(3)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
     const updateVisibleSlides = () => {
@@ -72,29 +73,38 @@ const useCarousel = (slideCount: number) => {
     }
   }, [slideCount, visibleSlides])
 
+  const totalPages = Math.max(1, slideCount - visibleSlides + 1)
+
+  const goToSlide = (index: number) => {
+    currentIndex.current = index
+    setActiveIndex(index)
+    tl.current?.tweenTo(index, { duration: 0.5, ease: 'power2.out' })
+  }
+
   const nextSlide = () => {
-    if (currentIndex.current < slideCount - visibleSlides) {
-      currentIndex.current += 1
-    } else {
-      currentIndex.current = 0
-    }
-    tl.current?.tweenTo(currentIndex.current, { duration: 0.5 })
+    const next =
+      currentIndex.current < slideCount - visibleSlides
+        ? currentIndex.current + 1
+        : 0
+    goToSlide(next)
   }
 
   const prevSlide = () => {
-    if (currentIndex.current > 0) {
-      currentIndex.current -= 1
-    } else {
-      currentIndex.current = slideCount - visibleSlides
-    }
-    tl.current?.tweenTo(currentIndex.current, { duration: 0.5 })
+    const prev =
+      currentIndex.current > 0
+        ? currentIndex.current - 1
+        : slideCount - visibleSlides
+    goToSlide(prev)
   }
 
   return {
     carouselRef,
     nextSlide,
     prevSlide,
+    goToSlide,
     visibleSlides,
+    activeIndex,
+    totalPages,
   }
 }
 

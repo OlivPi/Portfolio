@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     container: {
       padding: {
@@ -15,16 +13,18 @@ module.exports = {
     },
     extend: {
       colors: {
-        'primary': '#F9EFE6',
-        'secondary': '#5CD19A',
-        'tertiary': '#F7F7F7',
-        'quaternary': '#AB9F0E',
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+        tertiary: 'var(--color-tertiary)',
+        quaternary: 'var(--color-quaternary)',
+        foreground: 'var(--color-foreground)',
+        surface: 'var(--color-surface)',
       },
       fontFamily: {
         sans: ['var(--font-ibm)'],
-        mono: ['var(--font-roboto-mono)']
-      }
-    }
+        mono: ['var(--font-roboto-mono)'],
+      },
+    },
   },
   variants: {
     extend: {},
