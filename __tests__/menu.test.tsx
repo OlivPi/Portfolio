@@ -7,9 +7,20 @@ jest.mock('next/navigation', () => ({
   usePathname: jest.fn(),
 }))
 
+jest.mock('@/utils/animations/menuMobile', () => ({
+  openMenuAnimation: jest.fn(),
+  closeMenuAnimation: jest.fn(),
+}))
+
+import { openMenuAnimation, closeMenuAnimation } from '@/utils/animations/menuMobile'
+
 describe('Menu', () => {
   beforeEach(() => {
+    jest.clearAllMocks()
     ;(usePathname as jest.Mock).mockReturnValue('/event-com')
+    // jsdom n'implémente pas matchMedia : simule un viewport mobile
+    window.matchMedia = jest.fn().mockReturnValue({ matches: true })
+    document.body.style.overflow = ''
   })
 
   it('renders all navigation links', () => {
@@ -35,9 +46,6 @@ describe('Menu', () => {
   })
 
   it('renders burger button in mobile mode', () => {
-    global.innerWidth = 500
-    global.dispatchEvent(new Event('resize'))
-
     render(<Menu />)
 
     const burgerButton = screen.getByRole('button')
@@ -45,20 +53,16 @@ describe('Menu', () => {
   })
 
   it('toggles the mobile menu when burger button is clicked', () => {
-    global.innerWidth = 500
-    global.dispatchEvent(new Event('resize'))
-
     render(<Menu />)
 
-    const fullscreenMenu = screen.getByRole('navigation')
-    expect(fullscreenMenu).toHaveClass('translate-x-full')
-
     const burgerButton = screen.getByRole('button')
-    fireEvent.click(burgerButton)
-
-    expect(fullscreenMenu).toHaveClass('translate-x-0')
 
     fireEvent.click(burgerButton)
-    expect(fullscreenMenu).toHaveClass('translate-x-full')
+    expect(openMenuAnimation).toHaveBeenCalledTimes(1)
+    expect(document.body.style.overflow).toBe('hidden')
+
+    fireEvent.click(burgerButton)
+    expect(closeMenuAnimation).toHaveBeenCalledTimes(1)
+    expect(document.body.style.overflow).toBe('')
   })
 })

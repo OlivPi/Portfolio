@@ -9,6 +9,7 @@ export type ContactFormData = {
   email: string
   subject: string
   message: string
+  company?: string
 }
 
 export default function ContactForm() {
@@ -17,6 +18,7 @@ export default function ContactForm() {
     email: '',
     subject: '',
     message: '',
+    company: '',
   })
 
   const [status, setStatus] = useState<string | null>(null)
@@ -60,6 +62,19 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.contactFormContainer}>
+      {/* Piège à bots : invisible pour les utilisateurs, ignoré par le serveur s'il est rempli */}
+      <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px' }}>
+        <label htmlFor="company">Ne pas remplir</label>
+        <input
+          type="text"
+          id="company"
+          name="company"
+          value={formData.company}
+          onChange={handleChange}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
       <div>
         <label htmlFor="name">Nom</label>
         <input

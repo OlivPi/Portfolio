@@ -27,7 +27,6 @@ export async function sendEmail(data: ContactFormData) {
     }
   } catch (error: any) {
     console.error("Erreur lors de l'envoi de l'e-mail:", error.message);
-    alert(error.message || 'Erreur inconnue');
     throw error;
   }
 }

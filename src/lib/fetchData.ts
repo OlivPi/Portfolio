@@ -1,11 +1,9 @@
-import { PrismaClient } from '@prisma/client'
+import prisma from '@/lib/prisma'
 import { ExperienceSummary, experienceSelect } from '@/lib/types/ExperiencesTypes';
 import {skillsSelect, SkillsSummary} from "@/lib/types/SkillsTypes";
 import {personalInformationSelect, PersonalInformationSummary} from "@/lib/types/PersonalInformation";
 import {projectSelect, ProjectSummary} from "@/lib/types/ProjectTypes";
 import { educationSelect, EducationSummary } from "@/lib/types/EducationsTypes";
-
-const prisma = new PrismaClient()
 
 export async function getExperiences(type?: string): Promise<ExperienceSummary[]> {
   return prisma.experience.findMany({

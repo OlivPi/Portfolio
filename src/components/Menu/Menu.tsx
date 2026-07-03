@@ -29,11 +29,11 @@ export default function Menu() {
   const toggleMenu = contextSafe(() => {
     if (isMobile()) {
       if (isOpen) {
-        openMenuAnimation(menuRef.current!, burgerTopRef.current!, burgerMiddleRef.current!, burgerBottomRef.current!);
-        document.body.style.overflow = 'hidden';
-      } else {
         closeMenuAnimation(menuRef.current!, burgerTopRef.current!, burgerMiddleRef.current!, burgerBottomRef.current!);
         document.body.style.overflow = '';
+      } else {
+        openMenuAnimation(menuRef.current!, burgerTopRef.current!, burgerMiddleRef.current!, burgerBottomRef.current!);
+        document.body.style.overflow = 'hidden';
       }
       setIsOpen(!isOpen);
     } else {
