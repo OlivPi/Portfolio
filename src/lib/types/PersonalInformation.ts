@@ -1,6 +1,7 @@
-import { Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/client'
 
-export const personalInformationSelect = Prisma.validator<Prisma.PersonalInformationSelect>()({
+export const personalInformationSelect =
+  Prisma.validator<Prisma.PersonalInformationSelect>()({
     id: true,
     email: true,
     name: true,
@@ -9,5 +10,7 @@ export const personalInformationSelect = Prisma.validator<Prisma.PersonalInforma
     phone: true,
     age: true,
     drivingLicense: true,
-})
-export type PersonalInformationSummary = Prisma.PersonalInformationGetPayload<{ select: typeof personalInformationSelect}>
+  })
+export type PersonalInformationSummary = Prisma.PersonalInformationGetPayload<{
+  select: typeof personalInformationSelect
+}>

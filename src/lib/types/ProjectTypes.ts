@@ -1,4 +1,4 @@
-import {Prisma} from '@prisma/client';
+import { Prisma } from '@prisma/client'
 
 export const projectSelect = Prisma.validator<Prisma.ProjectSelect>()({
   id: true,
@@ -10,4 +10,6 @@ export const projectSelect = Prisma.validator<Prisma.ProjectSelect>()({
   link: true,
   skills: true,
 })
-export type ProjectSummary = Prisma.ProjectGetPayload<{select: typeof projectSelect}>
+export type ProjectSummary = Prisma.ProjectGetPayload<{
+  select: typeof projectSelect
+}>

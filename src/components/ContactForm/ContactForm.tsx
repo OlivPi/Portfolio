@@ -1,14 +1,15 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
-import { sendEmail } from "@/utils/send-email";
-import {gsap} from 'gsap';
-import styles from './contact.module.scss';
+import { sendEmail } from '@/utils/send-email'
+import { gsap } from 'gsap'
+import styles from './contact.module.scss'
 
 export type ContactFormData = {
   name: string
   email: string
   subject: string
   message: string
+  company?: string
 }
 
 export default function ContactForm() {
@@ -17,12 +18,13 @@ export default function ContactForm() {
     email: '',
     subject: '',
     message: '',
+    company: '',
   })
 
   const [status, setStatus] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
 
-  const progressBarRef = useRef<HTMLDivElement | null>(null);
+  const progressBarRef = useRef<HTMLDivElement | null>(null)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -32,19 +34,19 @@ export default function ContactForm() {
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus(null);
+    e.preventDefault()
+    setLoading(true)
+    setStatus(null)
 
     try {
-      await sendEmail(formData);
-      setStatus('success');
+      await sendEmail(formData)
+      setStatus('success')
     } catch (error: any) {
-      setStatus('error');
+      setStatus('error')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   useEffect(() => {
     if (loading && progressBarRef.current) {
@@ -52,14 +54,27 @@ export default function ContactForm() {
         progressBarRef.current,
         { width: '0%' },
         { width: '100%', duration: 2, ease: 'power2.inOut' }
-      );
+      )
     } else if (progressBarRef.current) {
-      gsap.set(progressBarRef.current, { width: '0%' });
+      gsap.set(progressBarRef.current, { width: '0%' })
     }
-  }, [loading]);
+  }, [loading])
 
   return (
     <form onSubmit={handleSubmit} className={styles.contactFormContainer}>
+      {/* Piège à bots : invisible pour les utilisateurs, ignoré par le serveur s'il est rempli */}
+      <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px' }}>
+        <label htmlFor="company">Ne pas remplir</label>
+        <input
+          type="text"
+          id="company"
+          name="company"
+          value={formData.company}
+          onChange={handleChange}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
       <div>
         <label htmlFor="name">Nom</label>
         <input
@@ -106,15 +121,10 @@ export default function ContactForm() {
       </div>
       {loading && (
         <div className={styles.loadingSend}>
-          <div
-            ref={progressBarRef}
-          ></div>
+          <div ref={progressBarRef}></div>
         </div>
       )}
-      <button
-        type="submit"
-        disabled={loading}
-      >
+      <button type="submit" disabled={loading}>
         {loading ? 'Envoi en cours...' : 'Envoyer'}
       </button>
       {status === 'success' && (

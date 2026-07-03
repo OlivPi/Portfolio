@@ -1,27 +1,31 @@
-import { ProjectSummary } from '@/lib/types/ProjectTypes';
-import Image from 'next/image';
-import Link from 'next/link';
-import styles from './projectCard.module.scss';
+import { ProjectSummary } from '@/lib/types/ProjectTypes'
+import Image from 'next/image'
+import Link from 'next/link'
+import styles from './projectCard.module.scss'
 
-interface ProjectsProps{
-  projects: ProjectSummary[];
+interface ProjectsProps {
+  projects: ProjectSummary[]
 }
 
-export default function ProjectCard({projects}: ProjectsProps) {
+export default function ProjectCard({ projects }: ProjectsProps) {
   return projects.map((project, key) => (
     <div key={project.id} className={styles.card}>
-      <Link href={project.link as string} passHref={true} target={'_blank'} rel={'noopener noreferrer'}>
+      <Link
+        href={project.link as string}
+        target={'_blank'}
+        rel={'noopener noreferrer'}
+      >
         <Image
           src={`/projects/${project.image}`}
           alt={project.name}
-          sizes="100vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           style={{
             width: '100%',
             height: 'auto',
           }}
           width={500}
           height={300}
-          placeholder="empty"
+          loading="lazy"
         />
         <h3>{project.name}</h3>
         <p>{project.description}</p>

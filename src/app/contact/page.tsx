@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 import ContactForm from '@/components/ContactForm/ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Contact'
+  title: 'Contact',
 }
-
 
 export default function ContactPage() {
   return (

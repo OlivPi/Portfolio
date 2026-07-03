@@ -1,17 +1,21 @@
 import Menu from '../Menu/Menu'
-import {SiteTitle} from "@/components/Titles/SiteTitle";
-import {PersonalInformationSummary} from "@/lib/types/PersonalInformation";
+import { SiteTitle } from '@/components/Titles/SiteTitle'
+import { PersonalInformationSummary } from '@/lib/types/PersonalInformation'
 interface PersonalInformationProps {
-    personalInformation: PersonalInformationSummary[];
+  personalInformation: PersonalInformationSummary[]
 }
-export default function Header({personalInformation}: PersonalInformationProps) {
+export default function Header({
+  personalInformation,
+}: PersonalInformationProps) {
   return (
     <header className="pt-6 pb-24">
       <div className={'flex justify-between pb-24'}>
-        <SiteTitle/>
+        <SiteTitle />
         <Menu />
       </div>
-            <h2 className={'text-xl flex flex-col'}>{personalInformation[0].title}</h2>
+      <h2 className={'text-xl flex flex-col'}>
+        {personalInformation[0].title}
+      </h2>
     </header>
   )
 }
