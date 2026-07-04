@@ -25,7 +25,8 @@ export default function ProjectCard({ projects }: ProjectsProps) {
           }}
           width={500}
           height={300}
-          loading="lazy"
+          priority={key === 0}
+          loading={key === 0 ? 'eager' : 'lazy'}
         />
         <h3>{project.name}</h3>
         <p>{project.description}</p>
