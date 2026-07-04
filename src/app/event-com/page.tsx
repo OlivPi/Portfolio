@@ -3,6 +3,7 @@ import { getProjects, getExperiences } from '@/lib/fetchData'
 import ProjectCard from '@/components/ProjectCard/ProjectCard'
 import styles from '@/app/ui/projects.module.scss'
 import Experiences from '@/components/Experiences/Experiences'
+import ScrollReveal from '@/components/ScrollReveal/ScrollReveal'
 
 export const metadata: Metadata = {
   title: 'Projets événementiel et communication',
@@ -24,13 +25,17 @@ export default async function EventComPage() {
   return (
     <section className={styles.container}>
       <h1>Événementiel & Communication</h1>
-      <div className={styles.containerProjects}>
-        <ProjectCard projects={projects} />
-      </div>
-      <div className={styles.containerXp}>
-        <h2>Expériences</h2>
-        <Experiences experiences={experiences} />
-      </div>
+      <ScrollReveal>
+        <div className={styles.containerProjects}>
+          <ProjectCard projects={projects} />
+        </div>
+      </ScrollReveal>
+      <ScrollReveal>
+        <div className={styles.containerXp}>
+          <h2>Expériences</h2>
+          <Experiences experiences={experiences} />
+        </div>
+      </ScrollReveal>
     </section>
   )
 }

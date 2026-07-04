@@ -10,6 +10,7 @@ import {
   openMenuAnimation,
   closeMenuAnimation,
 } from '@/utils/animations/menuMobile'
+import ThemeToggle from '@/components/ThemeToggle/ThemeToggle'
 
 const links = [
   { href: '/', name: 'Home' },
@@ -92,6 +93,9 @@ export default function Menu() {
             </li>
           ))}
         </ul>
+        <div className="hidden md:flex md:ml-4">
+          <ThemeToggle />
+        </div>
       </nav>
     </>
   )

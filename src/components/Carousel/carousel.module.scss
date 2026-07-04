@@ -1,6 +1,5 @@
 .carouselContainer {
   @apply relative w-full overflow-hidden h-auto;
-
 }
 
 .carouselWrapper {
@@ -13,9 +12,37 @@
 }
 
 .navigationButtons {
-  @apply absolute bottom-0 left-1/2 transform -translate-x-1/2 flex gap-4 text-2xl text-black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .arrowButton {
-  @apply cursor-pointer;
+  @apply cursor-pointer text-xl text-black dark:text-dark-text hover:text-secondary transition-colors duration-200;
+}
+
+.navigationButtons .dots {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: black;
+  opacity: 0.3;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.dotActive {
+  opacity: 1;
+  transform: scale(1.25);
 }

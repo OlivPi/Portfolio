@@ -10,7 +10,7 @@ interface CarouselProps {
 
 const Carousel = ({ children }: CarouselProps) => {
   const slideCount = React.Children.count(children)
-  const { carouselRef, visibleSlides, nextSlide, prevSlide } =
+  const { carouselRef, visibleSlides, nextSlide, prevSlide, activeIndex, pageCount } =
     useCarousel(slideCount)
 
   return (
@@ -34,6 +34,14 @@ const Carousel = ({ children }: CarouselProps) => {
         >
           <SlArrowLeft aria-hidden="true" />
         </button>
+        <div className={styles.dots}>
+          {Array.from({ length: pageCount }).map((_, i) => (
+            <span
+              key={i}
+              className={`${styles.dot} ${i === activeIndex ? styles.dotActive : ''}`}
+            />
+          ))}
+        </div>
         <button
           className={styles.arrowButton}
           onClick={nextSlide}

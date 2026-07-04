@@ -9,7 +9,7 @@
     @apply flex flex-wrap gap-1 mt-1;
 
     li{
-      @apply px-2 py-0.5 font-light text-sm border border-black rounded;
+      @apply px-2 py-0.5 font-light text-sm border border-black dark:border-dark-text rounded;
     }
   }
 }

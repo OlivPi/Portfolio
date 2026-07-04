@@ -98,7 +98,7 @@ export default function FloatingMenu() {
             key={link.href}
             href={link.href}
             onClick={() => setOpen(false)}
-            className="bg-black text-white text-sm px-4 py-2 hover:bg-secondary hover:text-black transition-colors duration-200 whitespace-nowrap"
+            className="bg-black dark:bg-dark-text text-white dark:text-dark-bg text-sm px-4 py-2 hover:bg-secondary hover:text-black transition-colors duration-200 whitespace-nowrap"
             style={{ opacity: 0 }}
           >
             {link.name}
@@ -110,7 +110,7 @@ export default function FloatingMenu() {
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu de navigation'}
         aria-expanded={open}
-        className="w-12 h-12 bg-black text-white flex items-center justify-center hover:bg-secondary hover:text-black transition-colors duration-200"
+        className="w-12 h-12 bg-black dark:bg-dark-text text-white dark:text-dark-bg flex items-center justify-center hover:bg-secondary hover:text-black transition-colors duration-200"
       >
         {open ? (
           <FaTimes size={18} aria-hidden="true" />

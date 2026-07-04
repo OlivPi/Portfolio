@@ -8,12 +8,12 @@
       @apply text-xl font-light;
     }
     input, textarea{
-      @apply bg-inherit border-b-2 border-black;
+      @apply bg-inherit border-b-2 border-black dark:border-dark-text;
     }
   }
 
   .loadingSend{
-    @apply relative w-full h-2 bg-gray-200 rounded-full mb-4;
+    @apply relative w-full h-2 bg-gray-200 dark:bg-dark-surface rounded-full mb-4;
 
     div{
       @apply absolute top-0 left-0 h-full bg-secondary rounded-full;
@@ -21,7 +21,7 @@
   }
 
   button{
-    @apply self-center w-1/2 bg-black text-white py-2 px-4 rounded-md hover:bg-secondary focus:outline-none;
+    @apply self-center w-1/2 bg-black dark:bg-dark-text text-white dark:text-dark-bg py-2 px-4 rounded-md hover:bg-secondary hover:text-black focus:outline-none;
   }
 
 }

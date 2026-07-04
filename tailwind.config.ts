@@ -3,6 +3,7 @@ module.exports = {
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     container: {
       padding: {
@@ -19,6 +20,9 @@ module.exports = {
         'secondary': '#5CD19A',
         'tertiary': '#F7F7F7',
         'quaternary': '#AB9F0E',
+        'dark-bg': '#121212',
+        'dark-surface': '#1E1E1E',
+        'dark-text': '#E8E0D5',
       },
       fontFamily: {
         sans: ['var(--font-ibm)'],

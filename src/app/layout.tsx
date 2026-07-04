@@ -66,15 +66,64 @@ export default async function RootLayout({
         lang="fr"
         className={`${ibm_plex.variable} ${roboto_mono.variable}`}
       >
+        <head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark')}catch(e){}})()`,
+            }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify([
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'WebSite',
+                  name: 'Olivier Pierre | Portfolio',
+                  url: 'https://opierre.fr',
+                },
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'Person',
+                  name: 'Olivier Pierre',
+                  url: 'https://opierre.fr',
+                  jobTitle:
+                    personalInformation[0]?.title ??
+                    'Chef de projet & Développeur front-end',
+                  image: 'https://opierre.fr/OlivWebN%26B.png',
+                  sameAs: [
+                    'https://www.linkedin.com/in/olivierpierre',
+                    'https://github.com/OlivPi',
+                  ],
+                  knowsAbout: ['React', 'WordPress', 'Next.js', 'Développement front-end', 'Gestion de projet'],
+                },
+              ]),
+            }}
+          />
+        </head>
         <body>
+          <a href="#main-content" className="skip-link">
+            Aller au contenu principal
+          </a>
           <Header personalInformation={personalInformation} />
           <TransitionComponent>
             <Suspense fallback={<Loading />}>
-              <main>{children}</main>
+              <main id="main-content">{children}</main>
             </Suspense>
           </TransitionComponent>
           <Footer />
           <FloatingMenu />
+          <div
+            id="page-overlay"
+            style={{
+              position: 'fixed',
+              inset: 0,
+              backgroundColor: '#5CD19A',
+              zIndex: 9999,
+              opacity: 0,
+              pointerEvents: 'none',
+            }}
+          />
         </body>
       </html>
     </TransitionProvider>

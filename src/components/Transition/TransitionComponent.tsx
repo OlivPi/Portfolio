@@ -26,10 +26,10 @@ const TransitionComponent = ({ children }: TransitionProviderProps) => {
         mountOnEnter
         unmountOnExit
         onEnter={() => {
-          pageTransitionEnter(nodeRef.current!, '#5CD19A', toggleCompleted)
+          pageTransitionEnter(nodeRef.current!, toggleCompleted)
         }}
         onExit={() => {
-          pageTransitionExit(nodeRef.current!, '#F9EFE6')
+          pageTransitionExit(nodeRef.current!)
         }}
       >
         <div ref={nodeRef}>{children}</div>

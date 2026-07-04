@@ -10,6 +10,9 @@ const useCarousel = (slideCount: number) => {
   const tl = useRef<gsap.core.Timeline | null>(null)
   const currentIndex = useRef(0)
   const [visibleSlides, setVisibleSlides] = useState(3)
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const pageCount = Math.max(slideCount - visibleSlides + 1, 1)
 
   useEffect(() => {
     const updateVisibleSlides = () => {
@@ -78,6 +81,7 @@ const useCarousel = (slideCount: number) => {
     } else {
       currentIndex.current = 0
     }
+    setActiveIndex(currentIndex.current)
     tl.current?.tweenTo(currentIndex.current, { duration: 0.5 })
   }
 
@@ -87,6 +91,7 @@ const useCarousel = (slideCount: number) => {
     } else {
       currentIndex.current = slideCount - visibleSlides
     }
+    setActiveIndex(currentIndex.current)
     tl.current?.tweenTo(currentIndex.current, { duration: 0.5 })
   }
 
@@ -95,6 +100,8 @@ const useCarousel = (slideCount: number) => {
     nextSlide,
     prevSlide,
     visibleSlides,
+    activeIndex,
+    pageCount,
   }
 }
 
