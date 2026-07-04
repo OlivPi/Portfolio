@@ -1,5 +1,5 @@
 .card{
-    @apply flex h-auto p-3;
+    @apply flex h-auto p-3 rounded transition-transform duration-300 hover:-translate-y-1 hover:shadow-md;
 
   h3{
         @apply text-xl py-1.5;

@@ -6,10 +6,10 @@
   }
 
   ul{
-    @apply flex flex-wrap;
+    @apply flex flex-wrap gap-1 mt-1;
 
     li{
-      @apply px-1 font-light;
+      @apply px-2 py-0.5 font-light text-sm border border-black rounded;
     }
   }
 }

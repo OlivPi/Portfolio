@@ -8,6 +8,7 @@ import Footer from '@/components/Footer/Footer'
 import { TransitionProvider } from '@/Context/TransitionContext'
 import TransitionComponent from '@/components/Transition/TransitionComponent'
 import Loading from '@/app/loading'
+import FloatingMenu from '@/components/FloatingMenu/FloatingMenu'
 
 export const metadata: Metadata = {
   title: {
@@ -73,6 +74,7 @@ export default async function RootLayout({
             </Suspense>
           </TransitionComponent>
           <Footer />
+          <FloatingMenu />
         </body>
       </html>
     </TransitionProvider>
