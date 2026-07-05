@@ -3,7 +3,7 @@ import Skill from '@/components/Competences/Competences'
 import { ProfileInfos } from '@/components/ProfileInfos/ProfileInfos'
 import { getEducations, getExperiences, getSkills } from '@/lib/fetchData'
 import { SkillsSummary } from '@/lib/types/SkillsTypes'
-import styles from './ui/home.module.scss'
+import styles from '@/app/ui/home.module.scss'
 import Education from '@/components/Educations/Educations'
 import ScrollReveal from '@/components/ScrollReveal/ScrollReveal'
 

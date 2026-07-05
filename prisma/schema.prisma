@@ -32,7 +32,7 @@ model Language {
 
 model Experience {
   id        Int       @id @default(autoincrement())
-  company   String    @unique
+  company   String
   city      String
   role      String
   tasks     String[]
