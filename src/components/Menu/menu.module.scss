@@ -1,6 +1,6 @@
 
 .burgerButton {
-  @apply relative flex flex-col justify-between w-10 h-8 z-30 md:hidden p-4 focus:outline-none;
+  @apply relative flex flex-col justify-between z-30 md:hidden p-4 focus:outline-none;
 
   .burgerLine {
     @apply block w-6 h-1 p-0.5 my-0.5 bg-black dark:bg-dark-text transition-all duration-300;
@@ -11,7 +11,7 @@
   @apply fixed flex flex-col justify-center items-center top-0 right-0 w-full h-full bg-white dark:bg-dark-surface p-8 translate-x-full transform transition-transform duration-500;
 
   @screen md {
-    @apply static flex-row justify-end items-center right-auto w-auto h-auto bg-transparent dark:bg-transparent p-0 translate-x-0;
+    @apply static flex-col-reverse justify-end items-center right-auto w-auto h-auto bg-transparent dark:bg-transparent p-0 translate-x-0;
   }
 
   ul {

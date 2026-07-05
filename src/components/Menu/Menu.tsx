@@ -93,7 +93,7 @@ export default function Menu() {
             </li>
           ))}
         </ul>
-        <div className="hidden md:flex md:ml-4">
+        <div className="hidden md:flex md:ml-4 md:self-end">
           <ThemeToggle />
         </div>
       </nav>

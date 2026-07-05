@@ -23,6 +23,7 @@
 
 .arrowButton {
   @apply cursor-pointer text-xl text-black dark:text-dark-text hover:text-secondary transition-colors duration-200;
+  touch-action: manipulation;
 }
 
 .navigationButtons .dots {

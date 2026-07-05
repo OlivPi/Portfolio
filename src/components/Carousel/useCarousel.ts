@@ -1,9 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import { gsap } from 'gsap'
-import { Draggable } from 'gsap/Draggable'
 import { useGSAP } from '@gsap/react'
-
-gsap.registerPlugin(Draggable)
 
 const useCarousel = (slideCount: number) => {
   const carouselRef = useRef<HTMLDivElement | null>(null)
@@ -54,23 +51,7 @@ const useCarousel = (slideCount: number) => {
       duration: slideCount - visibleSlides,
     })
 
-    const draggableInstance = Draggable.create(carouselRef.current, {
-      type: 'x',
-      bounds: carouselRef.current,
-      inertia: true,
-      onDrag: function () {
-        const progress = this.x / this.maxX
-        tl.current?.progress(progress)
-      },
-      snap: {
-        x: (endValue) =>
-          Math.round(endValue / carouselRef.current!.clientWidth) *
-          carouselRef.current!.clientWidth,
-      },
-    })
-
     return () => {
-      draggableInstance[0].kill()
       tl.current?.kill()
     }
   }, [slideCount, visibleSlides])
@@ -94,6 +75,39 @@ const useCarousel = (slideCount: number) => {
     setActiveIndex(currentIndex.current)
     tl.current?.tweenTo(currentIndex.current, { duration: 0.5 })
   }
+
+  // Refs stables pour que le handler tactile appelle toujours la version à jour
+  const nextSlideRef = useRef(nextSlide)
+  const prevSlideRef = useRef(prevSlide)
+  nextSlideRef.current = nextSlide
+  prevSlideRef.current = prevSlide
+
+  useEffect(() => {
+    const el = carouselRef.current
+    if (!el) return
+
+    let startX = 0
+
+    const onTouchStart = (e: TouchEvent) => {
+      startX = e.touches[0].clientX
+    }
+
+    const onTouchEnd = (e: TouchEvent) => {
+      const delta = startX - e.changedTouches[0].clientX
+      if (Math.abs(delta) > 50) {
+        if (delta > 0) nextSlideRef.current()
+        else prevSlideRef.current()
+      }
+    }
+
+    el.addEventListener('touchstart', onTouchStart, { passive: true })
+    el.addEventListener('touchend', onTouchEnd, { passive: true })
+
+    return () => {
+      el.removeEventListener('touchstart', onTouchStart)
+      el.removeEventListener('touchend', onTouchEnd)
+    }
+  }, [])
 
   return {
     carouselRef,
