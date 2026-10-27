@@ -1,141 +1,116 @@
-# My Web Portfolio
+# Portfolio
 
-A Next.js portfolio project built with TypeScript, React, Tailwind CSS for styling, GSAP for animations, and Prisma for database management. The project includes a fully functional contact form integrated with an email API, and uses reusable components for a modular and scalable architecture.
+Portfolio personnel construit avec Next.js 16 (App Router), TypeScript et Prisma/PostgreSQL. Le contenu (expériences, projets, formations, compétences) est lu depuis la base de données, avec un dashboard d'administration protégé par mot de passe pour gérer les expériences.
 
-## Table of Contents
+## Fonctionnalités
 
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Database Setup](#database-setup)
-- [Usage](#usage)
-- [Testing](#testing)
-- [Contributing](#contributing)
+- Pages publiques : accueil, projets web, événementiel (`event-com`), contact
+- Formulaire de contact envoyé par e-mail via SMTP (Nodemailer)
+- Animations GSAP et transitions de page
+- Thème clair/sombre, carousel responsive (swipe mobile)
+- Textes via `next-intl` (`locales/fr.json`, `locales/en.json` ; la locale est actuellement fixée à `fr` dans `src/utils/i18n.ts`)
+- Dashboard d'administration (`/admin`) : CRUD des expériences — voir [docs/admin-dashboard.md](docs/admin-dashboard.md)
+- Sitemap généré (`src/app/sitemap.ts`)
 
-## Features
+## Stack
 
-- **React and TypeScript**: For a strong typing system and efficient component-based development.
-- **Next.js**: For server-side rendering and optimized performance.
-- **Tailwind CSS**: For utility-first, responsive, and easy-to-customize styling.
-- **GSAP**: For smooth animations and enhanced user interaction.
-- **Prisma**: For type-safe database management with seeding capabilities.
-- **Email API**: Integrated contact form for sending emails using custom API routes.
-- **Modular Components**: Reusable components for a clean and maintainable codebase.
+| Domaine | Outils |
+| --- | --- |
+| Framework | Next.js 16, React 18 |
+| Langage | TypeScript |
+| Style | Tailwind CSS, SCSS (modules), styled-components |
+| Animations | GSAP, react-transition-group |
+| Base de données | PostgreSQL via Prisma 5 |
+| E-mail | Nodemailer |
+| Tests | Jest, Testing Library |
 
-## Tech Stack
+## Structure
 
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: GSAP (GreenSock Animation Platform)
-- **Database**: Prisma with PostgreSQL (or your preferred database)
-- **Testing**: Jest
-
-## Project Structure
-
-Here's an overview of the key folders in this project:
 ```
-portfolio/
-├── .next/                 # Next.js build output
-├── tests/             # Unit and integration tests
-├── data/                  # Data files for the application
-│   └── resumeData.json    # JSON file containing resume data
-├── prisma/                # Prisma database configuration
-│   ├── migrations/        # Database migrations
-│   ├── schema.prisma      # Prisma schema definition
-│   └── seed.ts            # Script to seed the database
-├── public/                # Public assets
-│   └── projects/          # Project-specific images and assets
-├── src/                   # Main source code
-│   ├── app/               # Next.js app directory
-│   │   ├── api/           # API routes
-│   │   │   └── email/     # Email API for the contact form
-│   │   │       └── route.ts  # Email sending logic
-│   │   ├── contact/       # Contact page components
-│   │   ├── event-com/     # Event-related components
-│   │   ├── ui/            # UI components
-│   │   └── web-projects/  # Web projects sections
-│   ├── components/        # Reusable React components
-│   │   ├── Carousel/      # Carousel component
-│   │   ├── Competences/   # Skills display components
-│   │   ├── ContactForm/   # Contact form components
-│   │   ├── Educations/    # Education section components
-│   │   ├── Experiences/   # Experience section components
-│   │   ├── Footer/        # Footer components
-│   │   ├── Header/        # Header components
-│   │   ├── Menu/          # Navigation menu components
-│   │   ├── ProfileInfos/  # Profile information components
-│   │   ├── ProjectCard/   # Project card display components
-│   │   └── Titles/        # Section title components
-│   ├── Context/           # Context providers for state management
-│   │   └── TransitionContext.tsx # Context for handling page transitions
-│   ├── lib/               # Library files
-│   │   ├── types/         # Type definitions
-│   │   └── prisma.ts      # Prisma client setup
-│   └── utils/             # Utility functions
-│       ├── animations/    # Animation utilities using GSAP
-│       ├── i18n.ts        # Internationalization setup
-│       └── send-email.ts  # Helper functions for sending emails
-├── .env                   # Environment variables
-├── jest.config.js         # Jest configuration file
-├── next.config.mjs        # Next.js configuration file
-├── tailwind.config.ts     # Tailwind CSS configuration
-└── tsconfig.json          # TypeScript configuration
+src/
+├── app/
+│   ├── (portfolio)/   # Pages publiques (accueil, contact, event-com, web-projects)
+│   ├── (admin)/admin/ # Dashboard d'administration (login, experiences)
+│   ├── api/email/     # Route d'envoi du formulaire de contact
+│   └── ui/            # Polices et styles globaux
+├── components/        # Composants réutilisables (Carousel, Header, ProjectCard…)
+├── Context/           # TransitionContext
+├── lib/               # Prisma, fetchData, actions et auth admin, types
+├── utils/             # Animations GSAP, i18n, envoi d'e-mails
+└── middleware.ts      # Protection des routes /admin/*
+prisma/                # schema.prisma, migrations, seed.ts
+data/resumeData.json   # Données sources utilisées par le seed
+locales/               # Traductions fr / en
+scripts/               # optimize-images.mjs
+docs/                  # Documentation complémentaire
+__tests__/             # Tests Jest
 ```
 
-## Installation
+## Démarrage
 
-Follow these steps to get the project running on your local machine:
+Prérequis : Node.js 20+ et une base PostgreSQL.
 
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
-
-2. **Clone the repository:**
-    ```bash
-    npm install
-
-3. **Set up environment variables:**
-   Create a .env file in the root directory and add your environment variables (e.g., database URL for Prisma and any email service configurations):
-    ```dotenv
-    DATABASE_URL=your-database-url
-    EMAIL_SERVICE_API_KEY=your-email-service-api-key
-
-## Database setup
-
-1. **Run Prisma migrations to set up the database schema:**
-    ```bash
-    npx prisma migrate dev --name init
-
-2. **Seed the database with initial data:**
-    ```bash
-    npx prisma db seed
-The seed file (prisma/seed.ts) is used to populate the database with initial data.   
-
-## Usage
-
-To start the development server, run:
 ```bash
-  npm run dev
- ```
-The application will be available at http://localhost:3000.
-
-## Testing 
-To run tests using Jest, use the following command:
-```bash
-  npx prisma db seed
+git clone <url-du-repo>
+cd Portfolio
+npm install
 ```
-Tests are located in the __tests__ folder and follow a standard structure for easy maintainability.
 
-## Contributing
+Créer un fichier `.env` à la racine :
 
-Contributions are welcome! Please follow these steps to contribute:
+```dotenv
+# Base de données
+POSTGRES_URL=postgresql://user:password@host:5432/db
+POSTGRES_URL_NON_POOLING=postgresql://user:password@host:5432/db
 
-	1.	Fork the repository.
-	2.	Create a new branch: git checkout -b feature/YourFeature
-	3.	Commit your changes: git commit -m 'Add some feature'
-	4.	Push to the branch: git push origin feature/YourFeature
-	5.	Open a pull request.
+# SMTP (formulaire de contact)
+SMTP_HOST=
+SMTP_PORT=
+SMTP_USER=
+SMTP_PASS=
+
+# Dashboard d'administration
+ADMIN_PASSWORD=
+ADMIN_TOKEN=
+```
+
+`ADMIN_TOKEN` est la valeur du cookie de session ; utiliser une chaîne aléatoire longue (par ex. `openssl rand -hex 32`). Le modifier invalide toutes les sessions.
+
+Initialiser la base :
+
+```bash
+npx prisma migrate dev   # applique les migrations
+npx prisma db seed       # charge les données initiales
+```
+
+Lancer le serveur de développement :
+
+```bash
+npm run dev
+```
+
+Le site est disponible sur http://localhost:3000 et l'administration sur http://localhost:3000/admin.
+
+## Scripts
+
+| Commande | Description |
+| --- | --- |
+| `npm run dev` | Serveur de développement |
+| `npm run build` | `prisma generate` puis build de production |
+| `npm start` | Lance le build de production |
+| `npm run lint` | ESLint |
+| `npm test` | Tests Jest |
+| `npm run generate` | Génère le client Prisma |
+| `node scripts/optimize-images.mjs` | Optimise les images de `public/` avec sharp |
+
+## Modèle de données
+
+Défini dans [prisma/schema.prisma](prisma/schema.prisma) : `PersonalInformation`, `Language`, `Experience`, `Skill`, `Project`, `ProjectSkill`, `Education`, `Interest`, `ContactMessage`.
+
+## Administration
+
+Les routes `/admin/*` sont protégées par [src/middleware.ts](src/middleware.ts) : le cookie `admin_token` (httpOnly, 7 jours) doit correspondre à `ADMIN_TOKEN`. La connexion se fait sur `/admin/login` avec `ADMIN_PASSWORD`. Détails d'usage dans [docs/admin-dashboard.md](docs/admin-dashboard.md).
+
+## Feuille de route
+
+- Étendre le dashboard aux projets, formations et compétences
