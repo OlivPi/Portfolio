@@ -48,14 +48,14 @@ describe('Menu', () => {
   it('renders burger button in mobile mode', () => {
     render(<Menu />)
 
-    const burgerButton = screen.getByRole('button')
+    const burgerButton = screen.getByRole('button', { name: /ouvrir le menu/i })
     expect(burgerButton).toBeInTheDocument()
   })
 
   it('toggles the mobile menu when burger button is clicked', () => {
     render(<Menu />)
 
-    const burgerButton = screen.getByRole('button')
+    const burgerButton = screen.getByRole('button', { name: /ouvrir le menu/i })
 
     fireEvent.click(burgerButton)
     expect(openMenuAnimation).toHaveBeenCalledTimes(1)
