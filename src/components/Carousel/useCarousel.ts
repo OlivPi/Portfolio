@@ -79,8 +79,10 @@ const useCarousel = (slideCount: number) => {
   // Refs stables pour que le handler tactile appelle toujours la version à jour
   const nextSlideRef = useRef(nextSlide)
   const prevSlideRef = useRef(prevSlide)
-  nextSlideRef.current = nextSlide
-  prevSlideRef.current = prevSlide
+  useEffect(() => {
+    nextSlideRef.current = nextSlide
+    prevSlideRef.current = prevSlide
+  })
 
   useEffect(() => {
     const el = carouselRef.current
