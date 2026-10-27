@@ -20,9 +20,12 @@ export default function FloatingMenu() {
   const navRef = useRef<HTMLElement>(null)
   const pathname = usePathname()
 
-  useEffect(() => {
+  // Ferme le menu à chaque changement de page (ajustement d'état pendant le rendu)
+  const [prevPathname, setPrevPathname] = useState(pathname)
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname)
     setOpen(false)
-  }, [pathname])
+  }
 
   useEffect(() => {
     const handleScroll = () => setVisible(window.scrollY > 150)
