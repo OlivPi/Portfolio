@@ -1,18 +1,26 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
 import { FaSun, FaMoon } from 'react-icons/fa'
 
-export default function ThemeToggle() {
-  const [dark, setDark] = useState(false)
+// La classe `dark` sur <html> est posée avant l'hydratation par le script
+// inline de layout.tsx : on la prend comme source de vérité.
+function subscribe(onChange: () => void) {
+  const observer = new MutationObserver(onChange)
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  })
+  return () => observer.disconnect()
+}
 
-  useEffect(() => {
-    const stored = localStorage.getItem('theme')
-    setDark(stored === 'dark')
-  }, [])
+const getSnapshot = () => document.documentElement.classList.contains('dark')
+const getServerSnapshot = () => false
+
+export default function ThemeToggle() {
+  const dark = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 
   const toggle = () => {
     const next = !dark
-    setDark(next)
     if (next) {
       document.documentElement.classList.add('dark')
       localStorage.setItem('theme', 'dark')
