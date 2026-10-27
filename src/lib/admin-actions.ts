@@ -3,6 +3,7 @@
 import prisma from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
+import { requireAdmin } from '@/lib/admin-auth'
 
 function parseTasks(raw: string): string[] {
   return raw
@@ -17,6 +18,7 @@ function parseDate(raw: FormDataEntryValue | null): Date | null {
 }
 
 export async function createExperience(formData: FormData) {
+  await requireAdmin()
   await prisma.experience.create({
     data: {
       company: formData.get('company') as string,
@@ -37,6 +39,7 @@ export async function createExperience(formData: FormData) {
 }
 
 export async function updateExperience(id: number, formData: FormData) {
+  await requireAdmin()
   await prisma.experience.update({
     where: { id },
     data: {
@@ -58,6 +61,7 @@ export async function updateExperience(id: number, formData: FormData) {
 }
 
 export async function deleteExperience(id: number) {
+  await requireAdmin()
   await prisma.experience.delete({ where: { id } })
   revalidatePath('/')
   revalidatePath('/web-projects')

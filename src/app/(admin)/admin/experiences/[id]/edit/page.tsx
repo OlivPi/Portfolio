@@ -1,4 +1,5 @@
 import prisma from '@/lib/prisma'
+import { requireAdmin } from '@/lib/admin-auth'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { updateExperience } from '@/lib/admin-actions'
@@ -9,6 +10,7 @@ interface EditPageProps {
 }
 
 export default async function EditExperiencePage({ params }: EditPageProps) {
+  await requireAdmin()
   const { id } = await params
   const experience = await prisma.experience.findUnique({
     where: { id: Number(id) },

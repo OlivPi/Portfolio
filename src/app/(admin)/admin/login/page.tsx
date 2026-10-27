@@ -12,7 +12,11 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
       <div className="bg-white p-8 w-full max-w-sm shadow-sm">
         <h1 className="text-xl font-bold mb-6">Administration</h1>
         {error && (
-          <p className="text-red-600 text-sm mb-4">Mot de passe incorrect.</p>
+          <p className="text-red-600 text-sm mb-4">
+            {error === 'locked'
+              ? 'Trop de tentatives. Réessayez dans 15 minutes.'
+              : 'Mot de passe incorrect.'}
+          </p>
         )}
         <form action={loginAction} className="space-y-4">
           <div>

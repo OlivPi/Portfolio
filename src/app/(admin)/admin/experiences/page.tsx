@@ -1,8 +1,10 @@
 import prisma from '@/lib/prisma'
+import { requireAdmin } from '@/lib/admin-auth'
 import Link from 'next/link'
 import DeleteButton from './DeleteButton'
 
 export default async function ExperiencesPage() {
+  await requireAdmin()
   const experiences = await prisma.experience.findMany({
     orderBy: { startDate: 'desc' },
   })
