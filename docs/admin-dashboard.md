@@ -141,3 +141,17 @@ Pour ajouter la gestion d'un autre modèle (Projets, Formations, Compétences) :
 1. Créer `src/lib/admin-actions-[model].ts` avec les Server Actions CRUD
 2. Créer `src/app/(admin)/admin/[model]/` avec les pages liste, new et edit
 3. Ajouter le lien dans `src/app/(admin)/admin/layout.tsx`
+
+---
+
+## Gestion des projets
+
+Accessible via **Projets** dans la barre latérale (`/admin/projects`). Chaque projet comporte :
+
+- **Nom**, **structure** (client ou organisateur), **description** (500 caractères max)
+- **Type** : Développement web (page Projets Web) ou Événement (page Événementiel)
+- **Lien** : URL `http://` ou `https://` obligatoire
+- **Image** : nom d'un fichier déjà présent dans `public/projects/` (ex. `mon-projet-image.png`). Ajouter l'image au dépôt avant de créer le projet.
+- **Compétences** : cases à cocher parmi les compétences existantes. Une nouvelle compétence doit d'abord être ajoutée en base.
+
+Les pages publiques sont revalidées automatiquement après chaque modification.

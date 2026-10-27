@@ -8,9 +8,9 @@ export const EXPERIENCE_TYPES = [
 const MAX_LENGTHS = { company: 150, city: 100, role: 150, logo: 100 } as const
 const MAX_TASKS = 30
 const MAX_TASK_LENGTH = 500
-const LOGO_REGEX = /^[\w][\w .\-]*\.(png|jpe?g|webp|svg|avif|gif)$/i
+export const LOGO_REGEX = /^[\w][\w .\-]*\.(png|jpe?g|webp|svg|avif|gif)$/i
 
-function text(formData: FormData, field: string, max: number): string {
+export function text(formData: FormData, field: string, max: number): string {
   const value = formData.get(field)
   if (typeof value !== 'string' || !value.trim()) {
     throw new Error(`Le champ « ${field} » est obligatoire.`)

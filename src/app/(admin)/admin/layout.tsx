@@ -22,6 +22,12 @@ export default function AdminLayout({
           >
             Expériences
           </Link>
+          <Link
+            href="/admin/projects"
+            className="block px-3 py-2 text-sm hover:bg-gray-800 transition-colors"
+          >
+            Projets
+          </Link>
         </nav>
         <div className="p-4 border-t border-gray-700">
           <form action={logoutAction}>

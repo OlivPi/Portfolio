@@ -9,7 +9,7 @@ Portfolio personnel construit avec Next.js 16 (App Router), TypeScript et Prisma
 - Animations GSAP et transitions de page
 - Thème clair/sombre, carousel responsive (swipe mobile)
 - Textes via `next-intl` (`locales/fr.json`, `locales/en.json` ; la locale est actuellement fixée à `fr` dans `src/utils/i18n.ts`)
-- Dashboard d'administration (`/admin`) : CRUD des expériences — voir [docs/admin-dashboard.md](docs/admin-dashboard.md)
+- Dashboard d'administration (`/admin`) : CRUD des expériences et des projets — voir [docs/admin-dashboard.md](docs/admin-dashboard.md)
 - Sitemap généré (`src/app/sitemap.ts`)
 
 ## Stack
@@ -30,7 +30,7 @@ Portfolio personnel construit avec Next.js 16 (App Router), TypeScript et Prisma
 src/
 ├── app/
 │   ├── (portfolio)/   # Pages publiques (accueil, contact, event-com, web-projects)
-│   ├── (admin)/admin/ # Dashboard d'administration (login, experiences)
+│   ├── (admin)/admin/ # Dashboard d'administration (login, experiences, projects)
 │   ├── api/email/     # Route d'envoi du formulaire de contact
 │   └── ui/            # Polices et styles globaux
 ├── components/        # Composants réutilisables (Carousel, Header, ProjectCard…)
@@ -113,4 +113,4 @@ Les routes `/admin/*` sont protégées par [src/middleware.ts](src/middleware.ts
 
 ## Feuille de route
 
-- Étendre le dashboard aux projets, formations et compétences
+- Étendre le dashboard aux formations et compétences (expériences et projets sont déjà gérés)
