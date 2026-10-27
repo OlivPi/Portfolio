@@ -48,7 +48,7 @@ __tests__/             # Tests Jest
 
 ## Démarrage
 
-Prérequis : Node.js 20+ et une base PostgreSQL.
+Prérequis : Node.js 24 (voir `engines` dans package.json) et une base PostgreSQL.
 
 ```bash
 git clone <url-du-repo>
