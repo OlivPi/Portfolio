@@ -275,7 +275,7 @@
       "image": "datatlasr-image.png",
       "description": "Datatlas est un outil de cartographie web interactif, développé sous React.js avec Kepler.gl",
       "structure": "ERASME - Metropole de Lyon",
-      "link": "https://datagora.erasme.org/projets/datatlas/",
+      "link": "https://erasme.org/datatlas",
       "skills": ["React", "Kepler.gl", "TypeScript"]
     },
     {
