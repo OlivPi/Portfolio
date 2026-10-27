@@ -1,11 +1,6 @@
 import { Experience } from '@prisma/client'
 
-const EXPERIENCE_TYPES = [
-  'Développement web',
-  'Événement',
-  'Salarié',
-  'Freelance',
-]
+import { EXPERIENCE_TYPES } from '@/lib/experience-validation'
 
 interface ExperienceFormProps {
   action: (formData: FormData) => Promise<void>
