@@ -31,7 +31,9 @@ export async function requireAdmin(): Promise<void> {
 export async function loginAction(formData: FormData) {
   const headerStore = await headers()
   const ip =
-    headerStore.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+    headerStore.get('x-real-ip') ||
+    headerStore.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    'unknown'
 
   const failures = recentFailures(ip)
   if (failures.length >= MAX_FAILED_ATTEMPTS) {

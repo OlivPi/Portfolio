@@ -72,7 +72,9 @@ export async function POST(request: NextRequest) {
   }
 
   const ip =
-    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+    request.headers.get('x-real-ip') ||
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    'unknown'
   if (isRateLimited(ip)) {
     return NextResponse.json(
       { error: 'Trop de messages envoyés. Réessayez plus tard.' },
