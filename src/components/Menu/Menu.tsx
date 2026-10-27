@@ -30,6 +30,9 @@ export default function Menu() {
 
   const isMobile = () => window.matchMedia('(max-width: 425px)').matches
 
+  // Faux positifs du lint React : `contextSafe` ne s'exécute pas au rendu, le
+  // callback n'est appelé que lors d'un clic (refs et document.body sûrs).
+  /* eslint-disable react-hooks/refs, react-hooks/immutability */
   const toggleMenu = contextSafe(() => {
     if (isMobile()) {
       if (isOpen) {
@@ -55,6 +58,7 @@ export default function Menu() {
       document.body.style.overflow = ''
     }
   })
+  /* eslint-enable react-hooks/refs, react-hooks/immutability */
 
   return (
     <>
