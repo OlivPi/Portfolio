@@ -96,10 +96,15 @@ export async function POST(request: NextRequest) {
     }
     const { name, email, subject, message } = result.data
 
+    // 465 = TLS implicite ; tout autre port (587) = STARTTLS.
+    const port = Number(EMAIL_PORT) || 465
     const transport = nodemailer.createTransport({
       host: EMAIL_HOST,
-      port: Number(EMAIL_PORT),
-      secure: true,
+      port,
+      secure: port === 465,
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 15_000,
       auth: {
         user: EMAIL_USER,
         pass: EMAIL_PASS,
