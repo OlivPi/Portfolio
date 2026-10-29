@@ -1,4 +1,4 @@
-// Comparaison à temps constant, sans dépendance Node (utilisable dans le middleware).
+// Comparaison à temps constant, sans dépendance Node (utilisable dans le proxy).
 export function safeEqual(a: string, b: string): boolean {
   if (a.length !== b.length) return false
   let diff = 0

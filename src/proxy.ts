@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { safeEqual } from '@/lib/safe-equal'
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   if (pathname === '/admin/login') return NextResponse.next()
